@@ -1,0 +1,297 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "fr.bafbi.javaproject.Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_93495950 { 
+   	label=bafbi
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1422111913 { 
+   	label=javaproject
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Barman977002513[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Barman</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Boisson573710667[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(E)Boisson</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   BIERE: Boisson [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   CIDRE: Boisson [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   EAU_PLATE: Boisson [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   JUS_FRUIT: Boisson [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   LIMONADE: Boisson [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ valueOf(name: String): Boisson</TD></TR>
+<TR><TD ALIGN="LEFT" >+ values(): Boisson[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#DCFBD5"
+];
+
+Cuisinier977002513[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cuisinier</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Employe977002513[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Employe</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   nom: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prenom: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   salaire: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unlimitedConsecutiveWorkDays: boolean [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ingredient573710667[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(E)Ingredient</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   BOEUF: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   CHAMPIGNON: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   FROMAGE: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   OIGNON: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   PAIN: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   PATE: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   SALADE: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   SAUCISSE: Ingredient [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   TOMATE: Ingredient [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ valueOf(name: String): Ingredient</TD></TR>
+<TR><TD ALIGN="LEFT" >+ values(): Ingredient[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#DCFBD5"
+];
+
+Main573710667[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- printMenu()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Manager977002513[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Manager</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Recette573710667[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Recette</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ingredients: List&lt;Ingredient&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   price: double [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Restaurant573710667[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Restaurant</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clean: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   employes: List&lt;Employe&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   equipes: Map&lt;Employe, Boolean&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   platPreparer: List&lt;Recette&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   recettes: List&lt;Recette&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stocks: Map&lt;Ingredient, Integer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   transaction: List&lt;Transaction&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addStock(ingredient: Ingredient, quantity: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ assign(employe: Employe)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clean()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cookRecette(recette: Recette, employe: Employe): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fire(employe: Employe)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getShopingList(baseStocks: Map&lt;Ingredient, Integer&gt;): Map&lt;Ingredient, Integer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hire(employe: Employe)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ newTransaction(transaction: Transaction)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ open()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Serveur977002513[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Serveur</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Transaction573710667[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Transaction</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clientNumber: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   commandeBoisson: List&lt;Boisson&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   commandePlat: List&lt;Recette&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   serveur: Serveur [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tableNumber: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addCommandeBoisson(boisson: Boisson)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addCommandePlat(recette: Recette)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ generateBill(): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+Employe977002513 -> Barman977002513[arrowhead=none, arrowtail=empty, dir=both];
+Employe977002513 -> Cuisinier977002513[arrowhead=none, arrowtail=empty, dir=both];
+Employe977002513 -> Manager977002513[arrowhead=none, arrowtail=empty, dir=both];
+Employe977002513 -> Serveur977002513[arrowhead=none, arrowtail=empty, dir=both];
+Restaurant573710667 -> Employe977002513[label="employes
+[0..*]"];
+Restaurant573710667 -> Employe977002513[label="equipes
+[0..*]"];
+Restaurant573710667 -> Ingredient573710667[label="stocks
+[0..*]"];
+Restaurant573710667 -> Recette573710667[label="platPreparer
+[0..*]"];
+Restaurant573710667 -> Recette573710667[label="recettes
+[0..*]"];
+Restaurant573710667 -> Transaction573710667[label="transaction
+[0..*]"];
+Transaction573710667 -> Boisson573710667[label="commandeBoisson
+[0..*]"];
+Transaction573710667 -> Recette573710667[label="commandePlat
+[0..*]"];
+Transaction573710667 -> Serveur977002513[label="serveur
+[0..1]"];
+    
+}
+@enduml
