@@ -47,7 +47,7 @@ public class Application {
 
                     createHeadElement(),
                     body(
-                            h1("Hello world"),
+                            h1(restaurant.getEquipe().toString()),
                             createCounterElement(count.get()),
                             button("Increment")
                                     .attr("hx-post", "/increment")
@@ -71,6 +71,7 @@ public class Application {
         // Handle a GET request to the path "/cuisine".
         var cuisineHandler = new CuisineHandler(app, restaurant.getCuisine());
         ManagerPage.setup(app, restaurant);
+        ServeurPage.setup(app, restaurant);
 
         app.start();
     }

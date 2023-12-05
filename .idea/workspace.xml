@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/LICENCE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="add readme + license">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +44,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -141,7 +147,7 @@
       <workItem from="1701176942989" duration="4638000" />
       <workItem from="1701184004789" duration="4547000" />
       <workItem from="1701260942158" duration="7786000" />
-      <workItem from="1701342446432" duration="14686000" />
+      <workItem from="1701342446432" duration="23487000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -151,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701523663297</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add readme + license">
+      <option name="closed" value="true" />
+      <created>1701524608548</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701524608548</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +174,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="add readme + license" />
+    <option name="LAST_COMMIT_MESSAGE" value="add readme + license" />
   </component>
 </project>

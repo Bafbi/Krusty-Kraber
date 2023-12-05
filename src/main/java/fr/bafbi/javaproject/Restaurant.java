@@ -2,6 +2,7 @@ package fr.bafbi.javaproject;
 
 import fr.bafbi.javaproject.jobs.Cuisinier;
 import fr.bafbi.javaproject.jobs.Serveur;
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ public class Restaurant {
     private final List<Recette> recettes;
     private final List<Transaction> transaction = new ArrayList<>();
     private boolean clean = true;
+
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Restaurant.class);
 
     public Restaurant(List<Recette> recettes) {
         this.recettes = recettes;
@@ -32,6 +35,26 @@ public class Restaurant {
 
     public Cuisine getCuisine() {
         return cuisine;
+    }
+
+    public Salle getSalle() {
+        return salle;
+    }
+
+    public List<Recette> getRecettes() {
+        return recettes;
+    }
+
+    public List<Transaction> getTransaction() {
+        return transaction;
+    }
+
+    public List<Transaction> getTransaction(int serveurId) {
+        return transaction.stream().filter(t -> t.getServeurId() == serveurId).toList();
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 
 

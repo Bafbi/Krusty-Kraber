@@ -82,10 +82,15 @@ public class Main {
 
 
         // Create transactions
-        Transaction client1 = new Transaction(1, 4, serveur1);
-        Transaction client2 = new Transaction(2, 2, serveur2);
-        Transaction client3 = new Transaction(3, 1, serveur3);
-        Transaction client4 = new Transaction(4, 3, serveur1);
+        Transaction client1 = new Transaction(1, 4, serveur1.getId());
+        Transaction client2 = new Transaction(2, 2, serveur2.getId());
+        Transaction client3 = new Transaction(3, 1, serveur3.getId());
+        Transaction client4 = new Transaction(4, 3, serveur1.getId());
+
+        restaurant.getTransaction().add(client1);
+        restaurant.getTransaction().add(client2);
+        restaurant.getTransaction().add(client3);
+        restaurant.getTransaction().add(client4);
 
         var app = new Application(restaurant);
         app.run();

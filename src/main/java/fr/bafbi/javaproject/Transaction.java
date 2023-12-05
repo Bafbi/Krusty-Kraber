@@ -1,25 +1,35 @@
 package fr.bafbi.javaproject;
 
-import fr.bafbi.javaproject.jobs.Serveur;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Transaction {
-    private final int tableNumber;
+    private final int tableId;
     private final int clientNumber;
-    private final Serveur serveur;
+    private final int serveurId;
     private final List<Command> commands = new ArrayList<>();
 
 
-    public Transaction(int tableNumber, int clientNumber, Serveur serveur) {
-        this.tableNumber = tableNumber;
+    public Transaction(int tableId, int clientNumber, int serveurId) {
+        this.tableId = tableId;
         this.clientNumber = clientNumber;
-        this.serveur = serveur;
+        this.serveurId = serveurId;
     }
 
     public List<Command> getCommands() {
         return commands;
+    }
+
+    public int tableId() {
+        return tableId;
+    }
+
+    public int getClientNumber() {
+        return clientNumber;
+    }
+
+    public int getServeurId() {
+        return serveurId;
     }
 
 
