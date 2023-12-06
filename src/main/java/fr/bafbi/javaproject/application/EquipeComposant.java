@@ -15,7 +15,7 @@ public class EquipeComposant {
     public EquipeComposant(Javalin app, EmployeManager employeManager) {
         this.app = app;
         this.employeManager = employeManager;
-        this.setup();
+        this.register();
     }
 
     private static ButtonTag planificationElement(boolean planifie, int employeId) {
@@ -25,7 +25,7 @@ public class EquipeComposant {
 
     }
 
-    public void setup() {
+    public void register() {
         app.patch("/api/equipe/{employeId}/toggle", ctx -> {
             int employeId = Integer.parseInt(ctx.pathParam("employeId"));
             var isPlanifie = employeManager.isPlanifie(employeId);
@@ -40,7 +40,6 @@ public class EquipeComposant {
 
     public UlTag element() {
         return ul(attrs("#employes"),
-
                 each(employeManager.getEmployes(), employe -> li(attrs(".employe"), employe.element(), planificationElement(employeManager.isPlanifie(employe.getId()), employe.getId()))));
     }
 }

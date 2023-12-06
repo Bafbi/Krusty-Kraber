@@ -6,8 +6,8 @@ public final class Cuisinier extends Employe {
 
     private final CuisinierStats stats = new CuisinierStats();
 
-    public Cuisinier(String nom, String prenom, double salaire) {
-        super(nom, prenom, salaire);
+    public Cuisinier(String nom, String prenom, double salaire, int id) {
+        super(nom, prenom, salaire, id);
     }
 
     @Override

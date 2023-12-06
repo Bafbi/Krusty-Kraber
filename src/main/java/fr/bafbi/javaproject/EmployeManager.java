@@ -13,11 +13,17 @@ public class EmployeManager {
         return employes.get(employeId);
     }
 
-    public void recruter(Employe employe) {
+    public Employe recruter(String nom, String prenom, double salaire, Class<? extends Employe> employeClass) {
         int id = employes.size();
-        employes.add(employe);
-        employe.setId(id);
-        equipe.put(id, false);
+        try {
+            Employe employe = employeClass.getConstructor(String.class, String.class, double.class, int.class).newInstance(nom, prenom, salaire, id);
+            employes.add(employe);
+            equipe.put(id, false);
+            return employe;
+        } catch (Exception e) {
+            Restaurant.getLogger().error("Impossible de créer un employé de type " + employeClass.getName(), e);
+        }
+        return null;
     }
 
     public void licencier(int employeId) {

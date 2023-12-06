@@ -18,15 +18,6 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:2.0.7")
 }
 
-/*
-task copyCssFile(type: Copy) {
-    dependsOn ':css:build'
-    from 'css/build/src/project.css'
-    into 'build/resources/css'
-}
-compileJava.dependsOn 'copyCssFile'
-*/
-// in to the build.gradle.kts file:
 tasks {
     val copyCssFile by registering(Copy::class) {
         dependsOn(":css:build")

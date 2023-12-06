@@ -1,7 +1,11 @@
 package fr.bafbi.javaproject;
 
+import j2html.tags.specialized.DivTag;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static j2html.TagCreator.*;
 
 public class Command {
 
@@ -32,5 +36,42 @@ public class Command {
         return boissonsPrepares;
     }
 
+    public void addRecette(Recette recette) {
+        recettes.add(recette);
+    }
+
+    public void addBoisson(Boisson boisson) {
+        boissons.add(boisson);
+    }
+
+    public void removeRecette(Recette recette) {
+        recettes.remove(recette);
+    }
+    public void removeRecette(String recetteId) {
+        for (Recette recette1 : recettes) {
+            if (recette1.getId().equals(recetteId)) {
+                recettes.remove(recette1);
+                break;
+            }
+        }
+    }
+
+    public void removeBoisson(Boisson boisson) {
+        boissons.remove(boisson);
+    }
+
+    public void addRecettePrepares(Recette recette) {
+        recettesPrepares.add(recette);
+    }
+
+    public void addBoissonPrepares(Boisson boisson) {
+        boissonsPrepares.add(boisson);
+    }
+
+    public DivTag recetteElement(Recette recette) {
+        return div(attrs(".recette"),
+                recette.element(recettes.stream().filter(r -> r.getId().equals(recette.getId())).count())
+        );
+    }
 
 }
