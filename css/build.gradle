@@ -11,7 +11,7 @@ node {
 // build css and put it into resources directory
 task build(type: NpxTask) {
     dependsOn npmInstall
-    command = './node_modules/.bin/snowpack'
+    command = "$projectDir/node_modules/.bin/snowpack"
     args = ['build']
     // only if project.css is newer than build/src/project.css and any changes in ../src/**/*.java
     /*onlyIf {

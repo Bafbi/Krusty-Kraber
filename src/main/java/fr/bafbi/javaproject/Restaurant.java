@@ -15,7 +15,10 @@ public class Restaurant {
     private final Salle salle;
     private final List<Recette> recettes;
     private final List<Transaction> transaction = new ArrayList<>();
-    private boolean clean = true;
+
+
+
+    private RestaurantState state = RestaurantState.CLOSE;
 
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Restaurant.class);
 
@@ -53,6 +56,13 @@ public class Restaurant {
         return transaction.stream().filter(t -> t.getServeurId() == serveurId).toList();
     }
 
+    public RestaurantState getState() {
+        return state;
+    }
+
+    public void setState(RestaurantState state) {
+        this.state = state;
+    }
     public static Logger getLogger() {
         return logger;
     }

@@ -19,7 +19,7 @@ public class EquipeComposant {
     }
 
     private static ButtonTag planificationElement(boolean planifie, int employeId) {
-        return button(attrs(".bg-primary p-2"), span("Plannifie :"), span(planifie ? "Oui" : "Non"))
+        return button(span("Plannifie : "), span(planifie ? "Oui" : "Non"))
                 .attr("hx-patch", "/api/equipe/" + employeId + "/toggle")
                 .attr("hx-swap", "outerHTML");
 

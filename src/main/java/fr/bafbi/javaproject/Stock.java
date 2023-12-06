@@ -41,8 +41,22 @@ public class Stock {
 
     }
 
+    public LiTag createStockElementButton(Ingredient ingredient) {
+        return li(attrs(".stock"),
+                h2(ingredient.name()),
+                span(stocks.get(ingredient).toString()),
+                button("+1").attr("hx-post", "/increment")
+                        .attr("hx-target", "#counter")
+                        .attr("hx-swap", "outerHTML")   ,
+                button("-1")
+        );
+
+    }
     public UlTag createStocksElement() {
-        return ul(attrs(".flex flex-row"), each(stocks.keySet(), this::createStockElement));
+        return ul(attrs(".flex flex-row gap-2"), each(stocks.keySet(), this::createStockElement));
+    }
+    public UlTag createStocksElementWButton() {
+        return ul(attrs(".flex flex-row gap-2"), each(stocks.keySet(), this::createStockElementButton));
     }
 
     public static class NotSufficientStockException extends Exception {

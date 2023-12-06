@@ -68,6 +68,14 @@ public class Application {
             ctx.html(newCounter.render());
         });
 
+        app.post("/inc_stock", ctx ->
+
+        {
+            var newCounter = createCounterElement(count.incrementAndGet());
+            ctx.html(newCounter.render());
+        });
+
+
         // Handle a GET request to the path "/cuisine".
         var cuisineHandler = new CuisineHandler(app, restaurant.getCuisine());
         ManagerPage.setup(app, restaurant);

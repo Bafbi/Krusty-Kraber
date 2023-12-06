@@ -5,3 +5,11 @@
 .my-title {
     @apply mt-6 text-center text-3xl font-extrabold;
 }
+
+button {
+    @apply bg-primary p-2 m-1
+}
+
+h1 {
+    @apply mb-8 mt-2
+}
