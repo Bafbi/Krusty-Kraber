@@ -2,10 +2,7 @@ package fr.bafbi.javaproject.application;
 
 import fr.bafbi.javaproject.Restaurant;
 import fr.bafbi.javaproject.RestaurantState;
-import fr.bafbi.javaproject.Stock;
 import io.javalin.Javalin;
-import j2html.tags.specialized.STag;
-import j2html.tags.specialized.UlTag;
 
 import static j2html.TagCreator.*;
 
@@ -16,7 +13,7 @@ public class ManagerPage {
 
     public static void setup(Javalin app, Restaurant restaurant) {
 
-        var equipeComposant = new EquipeComposant(app, restaurant.getEquipe());
+        var equipeComposant = new EquipeComposant(app, restaurant.getEmployeManager());
         RestaurantState state = restaurant.getState();
         var manage_open = button(attrs(".bg-primary p-2"), span(state.toString()))
                 .attr("hx-patch", "/api/restaurant/toggle")

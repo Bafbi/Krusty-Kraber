@@ -4,17 +4,16 @@ import fr.bafbi.javaproject.jobs.Cuisinier;
 import fr.bafbi.javaproject.jobs.Serveur;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
 
     private final Stock stocks = new Stock();
-    private final EmployeManager equipe = new EmployeManager();
+    private final EmployeManager employeManager = new EmployeManager();
     private final Cuisine cuisine;
     private final Salle salle;
     private final List<Recette> recettes;
-    private final List<Transaction> transaction = new ArrayList<>();
+    private final TransactionManager transactionManager = new TransactionManager();
 
 
 
@@ -24,16 +23,16 @@ public class Restaurant {
 
     public Restaurant(List<Recette> recettes) {
         this.recettes = recettes;
-        this.salle = new Salle(stocks, equipe.getEmployes(Serveur.class));
-        this.cuisine = new Cuisine(stocks, equipe.getEmployes(Cuisinier.class), recettes, salle.getCommands());
+        this.salle = new Salle(stocks, employeManager.getEmployes(Serveur.class));
+        this.cuisine = new Cuisine(stocks, employeManager.getEmployes(Cuisinier.class), recettes, transactionManager.getCommands());
     }
 
     public Stock getStocks() {
         return stocks;
     }
 
-    public EmployeManager getEquipe() {
-        return equipe;
+    public EmployeManager getEmployeManager() {
+        return employeManager;
     }
 
     public Cuisine getCuisine() {
@@ -48,13 +47,10 @@ public class Restaurant {
         return recettes;
     }
 
-    public List<Transaction> getTransaction() {
-        return transaction;
+    public TransactionManager getTransactionManager() {
+        return transactionManager;
     }
 
-    public List<Transaction> getTransaction(int serveurId) {
-        return transaction.stream().filter(t -> t.getServeurId() == serveurId).toList();
-    }
 
     public RestaurantState getState() {
         return state;
@@ -65,6 +61,15 @@ public class Restaurant {
     }
     public static Logger getLogger() {
         return logger;
+    }
+
+    public Recette getRecette(String recetteId) {
+        for (Recette recette : recettes) {
+            if (recette.getId().equals(recetteId)) {
+                return recette;
+            }
+        }
+        return null;
     }
 
 
