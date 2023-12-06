@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Transaction {
+
+    private final int id;
     private final int tableId;
     private final int clientNumber;
     private final int serveurId;
-    private final List<Command> commands = new ArrayList<>();
+    private final Command command = new Command(new ArrayList<>(), new ArrayList<>());
 
 
-    public Transaction(int tableId, int clientNumber, int serveurId) {
+    public Transaction(int tableId, int clientNumber, int serveurId, int id) {
         this.tableId = tableId;
         this.clientNumber = clientNumber;
         this.serveurId = serveurId;
+        this.id = id;
     }
 
-    public List<Command> getCommands() {
-        return commands;
+    public Command getCommand() {
+        return command;
     }
 
     public int tableId() {
@@ -30,6 +33,10 @@ public class Transaction {
 
     public int getServeurId() {
         return serveurId;
+    }
+
+    public int getId() {
+        return id;
     }
 
 

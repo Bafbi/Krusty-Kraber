@@ -61,36 +61,24 @@ public class Main {
         stocks.addStock(Ingredient.SALADE, 10);
 
         // Hire some employees
-        var serveur1 = new Serveur("Dupont", "Jean", 1500);
-        var serveur2 = new Serveur("Lemarcher", "Patrique", 1300);
-        var serveur3 = new Serveur("Brisette", "Stéphanie", 1500);
-        var cuisinier = new Cuisinier("Lefevre", "Marie", 1500);
-        var barman = new Barman("Paquet", "Adorlee", 1500);
-        var manager = new Manager("Lefebvre", "Jeanne", 2500);
+        var equipes = restaurant.getEmployeManager();
 
-        var equipes = restaurant.getEquipe();
-
-        equipes.recruter(serveur1);
-        equipes.recruter(serveur2);
-        equipes.recruter(serveur3);
-        equipes.recruter(cuisinier);
-        equipes.recruter(barman);
-        equipes.recruter(manager);
+        var serveur1 = equipes.recruter("Dupont", "Jean", 1500, Serveur.class);
+        var serveur2 = equipes.recruter("Lemarcher", "Patrique", 1300, Serveur.class);
+        var serveur3 = equipes.recruter("Brisette", "Stéphanie", 1500, Serveur.class);
+        var cuisinier = equipes.recruter("Lefevre", "Marie", 1500, Cuisinier.class);
+        var barman = equipes.recruter("Paquet", "Adorlee", 1500, Barman.class);
+        var manager = equipes.recruter("Lefebvre", "Jeanne", 2500, Manager.class);
 
         // Assign some employees to the team
-        restaurant.getEquipe().getEmployes().forEach(equipes::planifier);
+        restaurant.getEmployeManager().getEmployes().forEach(equipes::planifier);
 
-
-        // Create transactions
-        Transaction client1 = new Transaction(1, 4, serveur1.getId());
-        Transaction client2 = new Transaction(2, 2, serveur2.getId());
-        Transaction client3 = new Transaction(3, 1, serveur3.getId());
-        Transaction client4 = new Transaction(4, 3, serveur1.getId());
-
-        restaurant.getTransaction().add(client1);
-        restaurant.getTransaction().add(client2);
-        restaurant.getTransaction().add(client3);
-        restaurant.getTransaction().add(client4);
+        // Create some transactions
+        var transactions = restaurant.getTransactionManager();
+        transactions.createTransaction(1, 4, serveur1.getId());
+        transactions.createTransaction(2, 2, serveur2.getId());
+        transactions.createTransaction(3, 1, serveur3.getId());
+        transactions.createTransaction(4, 3, serveur1.getId());
 
         var app = new Application(restaurant);
         app.run();

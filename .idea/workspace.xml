@@ -4,13 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="add readme + license">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
+    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="add ServeurPage">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/TransactionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/css/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/EmployeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/EmployeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Salle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Salle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/EquipeComposant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/EquipeComposant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Barman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Barman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Cuisinier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Cuisinier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Employe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Employe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Serveur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Serveur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,28 +80,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_directory_selection": "/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/jobs",
-    "last_opened_file_path": "/home/bafbi/school/java/javaproject",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/jobs&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bafbi/school/java/javaproject&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.bafbi" />
@@ -131,10 +145,38 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="javaproject [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Launch" />
       <item itemvalue="Gradle.javaproject [assemble]" />
+      <item itemvalue="Gradle.javaproject [jar]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.javaproject [jar]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -147,7 +189,9 @@
       <workItem from="1701176942989" duration="4638000" />
       <workItem from="1701184004789" duration="4547000" />
       <workItem from="1701260942158" duration="7786000" />
-      <workItem from="1701342446432" duration="23487000" />
+      <workItem from="1701342446432" duration="31164000" />
+      <workItem from="1701868134179" duration="1837000" />
+      <workItem from="1701869984161" duration="1934000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -165,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701524608548</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add ServeurPage">
+      <option name="closed" value="true" />
+      <created>1701797300377</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701797300378</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +227,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
     <MESSAGE value="add readme + license" />
-    <option name="LAST_COMMIT_MESSAGE" value="add readme + license" />
+    <MESSAGE value="add ServeurPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ServeurPage" />
   </component>
 </project>

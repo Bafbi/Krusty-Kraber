@@ -6,8 +6,8 @@ public final class Barman extends Employe {
 
     private int nbCocktails;
 
-    public Barman(String nom, String prenom, double salaire) {
-        super(nom, prenom, salaire);
+    public Barman(String nom, String prenom, double salaire, int id) {
+        super(nom, prenom, salaire, id);
     }
 
     @Override

@@ -9,7 +9,7 @@ public class ManagerPage {
 
     public static void setup(Javalin app, Restaurant restaurant) {
 
-        var equipeComposant = new EquipeComposant(app, restaurant.getEquipe());
+        var equipeComposant = new EquipeComposant(app, restaurant.getEmployeManager());
 
         app.get("/manager", ctx -> {
             var content = html(

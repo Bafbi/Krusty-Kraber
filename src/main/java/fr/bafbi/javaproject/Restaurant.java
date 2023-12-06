@@ -4,33 +4,32 @@ import fr.bafbi.javaproject.jobs.Cuisinier;
 import fr.bafbi.javaproject.jobs.Serveur;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
 
     private final Stock stocks = new Stock();
-    private final EmployeManager equipe = new EmployeManager();
+    private final EmployeManager employeManager = new EmployeManager();
     private final Cuisine cuisine;
     private final Salle salle;
     private final List<Recette> recettes;
-    private final List<Transaction> transaction = new ArrayList<>();
+    private final TransactionManager transactionManager = new TransactionManager();
     private boolean clean = true;
 
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Restaurant.class);
 
     public Restaurant(List<Recette> recettes) {
         this.recettes = recettes;
-        this.salle = new Salle(stocks, equipe.getEmployes(Serveur.class));
-        this.cuisine = new Cuisine(stocks, equipe.getEmployes(Cuisinier.class), recettes, salle.getCommands());
+        this.salle = new Salle(stocks, employeManager.getEmployes(Serveur.class));
+        this.cuisine = new Cuisine(stocks, employeManager.getEmployes(Cuisinier.class), recettes, transactionManager.getCommands());
     }
 
     public Stock getStocks() {
         return stocks;
     }
 
-    public EmployeManager getEquipe() {
-        return equipe;
+    public EmployeManager getEmployeManager() {
+        return employeManager;
     }
 
     public Cuisine getCuisine() {
@@ -45,12 +44,12 @@ public class Restaurant {
         return recettes;
     }
 
-    public List<Transaction> getTransaction() {
-        return transaction;
+    public Recette getRecette(String recetteId) {
+        return recettes.stream().filter(r -> r.getId().equals(recetteId)).findFirst().orElse(null);
     }
 
-    public List<Transaction> getTransaction(int serveurId) {
-        return transaction.stream().filter(t -> t.getServeurId() == serveurId).toList();
+    public TransactionManager getTransactionManager() {
+        return transactionManager;
     }
 
     public static Logger getLogger() {

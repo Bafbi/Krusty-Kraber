@@ -1,7 +1,11 @@
 package fr.bafbi.javaproject;
 
+import j2html.tags.specialized.DivTag;
+
 import java.util.List;
 import java.util.stream.Stream;
+
+import static j2html.TagCreator.*;
 
 public class Recette {
     private final String name;
@@ -22,6 +26,7 @@ public class Recette {
         return price;
     }
 
+
     @Override
     public String toString() {
         return "Recette{" +
@@ -31,5 +36,17 @@ public class Recette {
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return name.toLowerCase().replace(" ", "_");
+    }
+
+    public DivTag element(long quantity) {
+        return div(
+                h3(name),
+                span("Prix: " + price + "€"),
+                quantity > 1 ? span("Quantité: " + quantity): null
+        );
     }
 }

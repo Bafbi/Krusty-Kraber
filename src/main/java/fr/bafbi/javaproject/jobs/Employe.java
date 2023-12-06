@@ -9,14 +9,15 @@ public abstract class Employe {
 
     private final String nom;
     private final String prenom;
-    private int id;
+    private final int id;
     private double salaire;
     private int consecutiveWorkDays = 0;
 
-    public Employe(String nom, String prenom, double salaire) {
+    public Employe(String nom, String prenom, double salaire, int id) {
         this.nom = nom;
         this.prenom = prenom;
         this.salaire = salaire;
+        this.id = id;
     }
 
     abstract public Stats getStats();
@@ -25,9 +26,6 @@ public abstract class Employe {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;

@@ -17,12 +17,4 @@ public class Salle {
         this.serveurs = serveurs;
     }
 
-    public List<Command> getCommands() {
-        List<Command> commands = new ArrayList<>();
-        for (Transaction transaction : transactions) {
-            commands.addAll(transaction.getCommands());
-        }
-        return commands;
-    }
-
 }
