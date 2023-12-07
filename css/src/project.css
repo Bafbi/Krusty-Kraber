@@ -6,10 +6,42 @@
     @apply mt-6 text-center text-3xl font-extrabold;
 }
 
-button {
+body {
+    @apply bg-background m-5;
+}
+button, button[type="submit"]{
     @apply bg-primary p-2 m-1
+}
+input {
+    @apply text-on-background-light p-2;
 }
 
 h1 {
-    @apply mb-8 mt-2
+    @apply mb-8 mt-2 text-3xl
+}
+h2 {
+    @apply mb-2 mt-2 text-xl
+}
+
+h3 {
+    @apply mb-2 mt-2 text-base
+}
+
+a {
+    @apply text-tertiary;
+}
+
+/*div interne*/
+.intradiv {
+    @apply bg-surface-variant p-1;
+}
+
+.intradiv > h2, .intradiv > h3 {
+    @apply text-white;
+}
+
+/*form serveur*/
+#new-transaction-form > *{
+    align-self: center;
+    align-items: center;
 }

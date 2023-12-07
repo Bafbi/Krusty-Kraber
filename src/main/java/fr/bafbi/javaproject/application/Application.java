@@ -20,6 +20,7 @@ public class Application {
 
     public static HeadTag createHeadElement() {
         return head(
+                meta().withCharset("utf-8"),
                 script().withSrc("/webjars/htmx.org/1.9.2/dist/htmx.min.js"),
                 link().withRel("stylesheet").withHref("/css/project.css")
         );

@@ -58,8 +58,8 @@ public abstract class Employe {
 
     public DivTag element() {
         return div(attrs(".employe"),
-                h2(nom + " " + prenom),
-                span(this.getClass().getSimpleName())
+                h3(nom + " " + prenom+" - "+this.getClass().getSimpleName())
+
 
         );
     }

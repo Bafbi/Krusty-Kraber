@@ -1,5 +1,6 @@
 package fr.bafbi.javaproject;
 
+import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.LiTag;
 import j2html.tags.specialized.UlTag;
 
@@ -41,9 +42,9 @@ public class Stock {
 
     }
 
-    public LiTag createStockElementButton(Ingredient ingredient) {
-        return li(attrs(".stock"),
-                h2(ingredient.name()),
+    public DivTag createStockElementButton(Ingredient ingredient) {
+        return div(attrs(".stock"),
+                h3(ingredient.name()),
                 span(stocks.get(ingredient).toString()),
                 button("+1").attr("hx-post", "/increment")
                         .attr("hx-target", "#counter")
@@ -55,8 +56,8 @@ public class Stock {
     public UlTag createStocksElement() {
         return ul(attrs(".flex flex-row gap-2"), each(stocks.keySet(), this::createStockElement));
     }
-    public UlTag createStocksElementWButton() {
-        return ul(attrs(".flex flex-row gap-2"), each(stocks.keySet(), this::createStockElementButton));
+    public DivTag createStocksElementWButton() {
+        return div(attrs(".grid grid-cols-5 gap-2"), each(stocks.keySet(), this::createStockElementButton));
     }
 
     public static class NotSufficientStockException extends Exception {

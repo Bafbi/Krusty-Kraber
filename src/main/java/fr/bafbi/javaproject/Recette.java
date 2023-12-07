@@ -45,7 +45,8 @@ public class Recette {
     public DivTag element(long quantity) {
         return div(
                 h3(name),
-                span("Prix: " + price + "€"),
+                span("Prix: " + price ),
+                span(rawHtml("&#8364;")),
                 quantity > 1 ? span("Quantité: " + quantity): null
         );
     }

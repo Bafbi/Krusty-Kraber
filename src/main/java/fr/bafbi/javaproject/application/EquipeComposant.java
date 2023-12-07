@@ -3,6 +3,7 @@ package fr.bafbi.javaproject.application;
 import fr.bafbi.javaproject.EmployeManager;
 import io.javalin.Javalin;
 import j2html.tags.specialized.ButtonTag;
+import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.UlTag;
 
 import static j2html.TagCreator.*;
@@ -38,8 +39,8 @@ public class EquipeComposant {
         });
     }
 
-    public UlTag element() {
-        return ul(attrs("#employes"),
-                each(employeManager.getEmployes(), employe -> li(attrs(".employe"), employe.element(), planificationElement(employeManager.isPlanifie(employe.getId()), employe.getId()))));
+    public DivTag element() {
+        return div(attrs(".grid grid-cols-3 gap-4"),
+                each(employeManager.getEmployes(), employe -> div(attrs(".employe"), employe.element(), planificationElement(employeManager.isPlanifie(employe.getId()), employe.getId()))));
     }
 }

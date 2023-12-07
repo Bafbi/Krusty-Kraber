@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="add readme + license">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/RestaurantState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/css/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/src/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/src/project.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Stock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/EquipeComposant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/EquipeComposant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Employe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Employe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +55,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LimeSku&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="30a4ed25-6580-40f5-8f1b-01f16c30e249" />
+        <option name="url" value="https://github.com/Bafbi/Krusty-Kraber.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -153,7 +167,8 @@
       <workItem from="1701260942158" duration="7786000" />
       <workItem from="1701342446432" duration="23487000" />
       <workItem from="1701851864398" duration="7499000" />
-      <workItem from="1701871573041" duration="598000" />
+      <workItem from="1701871573041" duration="1281000" />
+      <workItem from="1701957940983" duration="8299000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -171,16 +186,44 @@
       <option name="project" value="LOCAL" />
       <updated>1701524608548</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add readme + license">
+      <option name="closed" value="true" />
+      <created>1701872219966</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701872219966</updated>
+    </task>
+    <task id="LOCAL-00004" summary="push">
+      <option name="closed" value="true" />
+      <created>1701872269993</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701872269993</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
     <MESSAGE value="add readme + license" />
-    <option name="LAST_COMMIT_MESSAGE" value="add readme + license" />
+    <MESSAGE value="push" />
+    <option name="LAST_COMMIT_MESSAGE" value="push" />
   </component>
 </project>

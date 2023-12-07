@@ -25,12 +25,20 @@ public class ManagerPage {
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
                             h1("Manager"),
-                            h1("Stocks : "),
-                            restaurant.getStocks().createStocksElementWButton(),
-                            h1("Etat du restaurant : "),
-                            manage_open,
-                            h1("Gestion des equipes : "),
-                            equipeComposant.element()
+                            div(attrs(".grid grid-cols-2 gap-5"),
+                                    div(attrs(".intradiv"),
+                                            h2("Stocks : "),
+                                            restaurant.getStocks().createStocksElementWButton()),
+                                    div(attrs(".intradiv"),
+                                            h2("Etat du restaurant : "),
+                                            manage_open),
+                                    div(attrs(".intradiv col-span-2"),
+                                            h2("Gestion des equipes : "),
+                                            equipeComposant.element()
+                                    )
+                            )
+
+
                     )
 
             );
