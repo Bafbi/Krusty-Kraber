@@ -18,6 +18,7 @@ public class ServeurPage {
             var content = html(
                     Application.createHeadElement(),
                     body(
+                            Application.HeaderElement(),
                             h1("Serveurs"),
                             div(attrs(".grid grid-cols-2 gap-4"),
                                     each(restaurant.getEmployeManager().getEmployes(Serveur.class), serveur -> li(attrs(".serveur"),
@@ -37,6 +38,7 @@ public class ServeurPage {
             var content = html(
                     Application.createHeadElement(),
                     body(
+                            Application.HeaderElement(),
                             h1("Serveur " + serveurId),
                             div(attrs(".grid grid-rows-2"),
                                 // new transaction form
@@ -76,6 +78,7 @@ public class ServeurPage {
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
+                            Application.HeaderElement(),
                             h1("Serveur " + serveurId),
                             h2("Transaction " + transactionId),
                             div(attrs(".grid grid-cols-2 gap-4"),
@@ -136,7 +139,8 @@ public class ServeurPage {
                             h3("Table " + transaction.tableId() + " - " + transaction.getClientNumber() + " clients"),
                             div(attrs(".grid grid-cols-2 gap-2"),
                                     a("Commander").withHref("/serveur/" + serveurId + "/" + transaction.getId()),
-                                    a("Terminer").withHref("/serveur/" + serveurId + "/" + transaction.getId()))
+                                    a("Terminer").withHref("/serveur/" + serveurId + "/" + transaction.getId())),
+                transaction.getCommand().isReady() ? span("Commande prête") : span("Commande en cours de préparation")
                     );
     }
     private static DivTag commandElement(Command command, int serveurId, int transactionId) {
