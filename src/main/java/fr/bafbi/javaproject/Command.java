@@ -1,77 +1,79 @@
 package fr.bafbi.javaproject;
 
+import j2html.tags.DomContent;
 import j2html.tags.specialized.DivTag;
+import j2html.tags.specialized.UlTag;
+import kotlin.Pair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static j2html.TagCreator.*;
 
 public class Command {
 
-    private final List<Recette> recettes;
-    private final List<Recette> recettesPrepares = new ArrayList<>();
-    private final List<Boisson> boissons;
-    private final List<Boisson> boissonsPrepares = new ArrayList<>();
+    private final Map<Recette, Integer> recettesCommandes = new HashMap<>();
+    private final Map<Recette, Integer> recettesPrepares = new HashMap<>();
+    private final Map<Boisson, Integer> boissonsCommandes = new HashMap<>();
+    private final Map<Boisson, Integer> boissonsPrepares = new HashMap<>();
 
-    public Command(List<Recette> recettes, List<Boisson> boissons) {
-        this.recettes = recettes;
-        this.boissons = boissons;
+    public Map<Recette, Integer> getRecettesCommandes() {
+        return recettesCommandes;
     }
 
-    public List<Recette> getRecettes() {
-        return recettes;
-    }
-
-    public List<Recette> getRecettesPrepares() {
+    public Map<Recette, Integer> getRecettesPrepares() {
         return recettesPrepares;
     }
 
-
-    public List<Boisson> getBoissons() {
-        return boissons;
+    public Map<Recette, Pair<Integer, Integer>> getRecettes() {
+        Map<Recette, Pair<Integer, Integer>> recettes = new HashMap<>();
+        for (Recette recette : recettesCommandes.keySet()) {
+            recettes.put(recette, new Pair<>(recettesCommandes.get(recette), recettesPrepares.get(recette)));
+        }
+        return recettes;
     }
 
-    public List<Boisson> getBoissonsPrepares() {
+    public Map<Boisson, Integer> getBoissonsCommandes() {
+        return boissonsCommandes;
+    }
+
+    public Map<Boisson, Integer> getBoissonsPrepares() {
         return boissonsPrepares;
     }
 
+    public Map<Boisson, Pair<Integer, Integer>> getBoissons() {
+        Map<Boisson, Pair<Integer, Integer>> boissons = new HashMap<>();
+        for (Boisson boisson : boissonsCommandes.keySet()) {
+            boissons.put(boisson, new Pair<>(boissonsCommandes.get(boisson), boissonsPrepares.get(boisson)));
+        }
+        return boissons;
+    }
+
     public void addRecette(Recette recette) {
-        recettes.add(recette);
+        recettesCommandes.put(recette, recettesCommandes.getOrDefault(recette, 0) + 1);
     }
 
     public void addBoisson(Boisson boisson) {
-        boissons.add(boisson);
+        boissonsCommandes.put(boisson, boissonsCommandes.getOrDefault(boisson, 0) + 1);
     }
 
     public void removeRecette(Recette recette) {
-        recettes.remove(recette);
+        recettesCommandes.put(recette, recettesCommandes.getOrDefault(recette, 0) - 1);
     }
+
     public void removeRecette(String recetteId) {
-        for (Recette recette1 : recettes) {
-            if (recette1.getId().equals(recetteId)) {
-                recettes.remove(recette1);
-                break;
+        for (Recette recette : recettesCommandes.keySet()) {
+            if (recette.getId().equals(recetteId)) {
+                removeRecette(recette);
             }
         }
     }
 
     public void removeBoisson(Boisson boisson) {
-        boissons.remove(boisson);
+        boissonsCommandes.put(boisson, boissonsCommandes.getOrDefault(boisson, 0) - 1);
     }
 
-    public void addRecettePrepares(Recette recette) {
-        recettesPrepares.add(recette);
-    }
-
-    public void addBoissonPrepares(Boisson boisson) {
-        boissonsPrepares.add(boisson);
-    }
-
-    public DivTag recetteElement(Recette recette) {
-        return div(attrs(".recette"),
-                recette.element(recettes.stream().filter(r -> r.getId().equals(recette.getId())).count())
-        );
-    }
 
 }

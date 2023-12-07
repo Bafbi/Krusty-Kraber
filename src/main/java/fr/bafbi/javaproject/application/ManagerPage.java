@@ -24,6 +24,7 @@ public class ManagerPage {
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
+                            Application.HeaderElement(),
                             h1("Manager"),
                             div(attrs(".grid grid-cols-2 gap-5"),
                                     div(attrs(".intradiv"),

@@ -23,8 +23,8 @@ public class Restaurant {
 
     public Restaurant(List<Recette> recettes) {
         this.recettes = recettes;
-        this.salle = new Salle(stocks, employeManager.getEmployes(Serveur.class));
-        this.cuisine = new Cuisine(stocks, employeManager.getEmployes(Cuisinier.class), recettes, transactionManager.getCommands());
+        this.salle = new Salle(stocks, employeManager);
+        this.cuisine = new Cuisine(stocks, employeManager, recettes, transactionManager.getCommands());
     }
 
     public Stock getStocks() {

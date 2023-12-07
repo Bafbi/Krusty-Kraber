@@ -75,10 +75,14 @@ public class Main {
 
         // Create some transactions
         var transactions = restaurant.getTransactionManager();
-        transactions.createTransaction(1, 4, serveur1.getId());
+        var client1 = transactions.createTransaction(1, 4, serveur1.getId());
         transactions.createTransaction(2, 2, serveur2.getId());
         transactions.createTransaction(3, 1, serveur3.getId());
         transactions.createTransaction(4, 3, serveur1.getId());
+
+        client1.getCommand().addRecette(cheeseBurger);
+        client1.getCommand().addRecette(hotDog);
+        client1.getCommand().addRecette(hotDog);
 
         var app = new Application(restaurant);
         app.run();

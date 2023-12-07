@@ -1,5 +1,6 @@
 package fr.bafbi.javaproject;
 
+import fr.bafbi.javaproject.jobs.Cuisinier;
 import fr.bafbi.javaproject.jobs.Serveur;
 
 import java.util.ArrayList;
@@ -9,12 +10,16 @@ import java.util.Set;
 public class Salle {
 
     private final Stock stocks;
-    private final Set<Serveur> serveurs;
+    private final EmployeManager employeManager;
     private final List<Transaction> transactions = new ArrayList<>();
 
-    public Salle(Stock stocks, Set<Serveur> serveurs) {
+    public Salle(Stock stocks, EmployeManager employeManager) {
         this.stocks = stocks;
-        this.serveurs = serveurs;
+        this.employeManager = employeManager;
+    }
+
+    public Set<Serveur> getServeurs() {
+        return employeManager.getEmployes(Serveur.class);
     }
 
 }

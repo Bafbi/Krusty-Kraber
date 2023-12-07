@@ -5,6 +5,7 @@ import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import j2html.tags.specialized.H2Tag;
 import j2html.tags.specialized.HeadTag;
+import j2html.tags.specialized.HeaderTag;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -22,7 +23,8 @@ public class Application {
         return head(
                 meta().withCharset("utf-8"),
                 script().withSrc("/webjars/htmx.org/1.9.2/dist/htmx.min.js"),
-                link().withRel("stylesheet").withHref("/css/project.css")
+                link().withRel("stylesheet").withHref("/css/project.css"),
+                meta().withCharset("utf-8")
         );
     }
 
@@ -48,13 +50,9 @@ public class Application {
 
                     createHeadElement(),
                     body(
-                            h1(restaurant.getEmployeManager().toString()),
-                            createCounterElement(count.get()),
-                            button("Increment")
-                                    .attr("hx-post", "/increment")
-                                    .attr("hx-target", "#counter")
-                                    .attr("hx-swap", "outerHTML")
-                                    .withClasses("p-4", "bg-blue-500", "text-white", "rounded-lg")
+                            HeaderElement(),
+                            h1("Bienvenue au restaurant"),
+                            p("Nombre de visiteurs : " + restaurant.getTransactionManager().getTransactionCount())
                     )
 
             );
@@ -62,33 +60,24 @@ public class Application {
             ctx.html(rendered);
         });
 
-        app.post("/increment", ctx ->
-
-        {
-            var newCounter = createCounterElement(count.incrementAndGet());
-            ctx.html(newCounter.render());
-        });
-
-        app.post("/inc_stock", ctx ->
-
-        {
-            var newCounter = createCounterElement(count.incrementAndGet());
-            ctx.html(newCounter.render());
-        });
-
 
         // Handle a GET request to the path "/cuisine".
-        var cuisineHandler = new CuisineHandler(app, restaurant.getCuisine());
         ManagerPage.setup(app, restaurant);
         ServeurPage.setup(app, restaurant);
+        CuisinePage.setup(app, restaurant);
 
         app.start();
     }
 
-    // Create a H2 tag with an id.
-    private H2Tag createCounterElement(int count) {
-        return h2("count: " + count)
-                .withId("counter").withClasses("my-title");
+    public static HeaderTag HeaderElement() {
+        return header(
+                nav(attrs(".flex .flex-row .justify-between .items-center .bg-background .p-4"),
+                        a("Home").withHref("/"),
+                        a("Cuisine").withHref("/cuisine"),
+                        a("Manager").withHref("/manager"),
+                        a("Serveur").withHref("/serveur")
+                )
+        );
     }
 
 }
