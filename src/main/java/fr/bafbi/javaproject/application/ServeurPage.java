@@ -142,11 +142,10 @@ public class ServeurPage {
     private static DivTag commandElement(Command command, int serveurId, int transactionId) {
         return div(attrs("#command"),
                 div(
-                        // regrouper les recettes par nom et afficher le nom de la recette et le nombre de fois qu'elle est commandée
                         each(
-                                command.getRecettes().stream().distinct().toList(),
+                                command.getRecettesCommandes().keySet(),
                                 recette -> div(
-                                        command.recetteElement(recette),
+                                        recette.element(command.getRecettesCommandes().get(recette)),
                                         button("Supprimer")
                                                 .attr("hx-delete", "/api/serveur/" + serveurId + "/"+ transactionId +"/command?recette_id=" + recette.getId())
                                                 .attr("hx-target", "#command")
