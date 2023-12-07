@@ -9,7 +9,7 @@ public class Transaction {
     private final int tableId;
     private final int clientNumber;
     private final int serveurId;
-    private final Command command = new Command(new ArrayList<>(), new ArrayList<>());
+    private final Command command = new Command();
 
 
     public Transaction(int tableId, int clientNumber, int serveurId, int id) {

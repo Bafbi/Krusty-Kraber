@@ -24,6 +24,7 @@ public class ManagerPage {
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
+                            Application.HeaderElement(),
                             h1("Manager"),
                             h1("Stocks : "),
                             restaurant.getStocks().createStocksElementWButton(),

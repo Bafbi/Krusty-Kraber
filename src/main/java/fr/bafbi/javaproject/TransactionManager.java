@@ -1,5 +1,7 @@
 package fr.bafbi.javaproject;
 
+import kotlin.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,17 @@ public class TransactionManager {
         return commands;
     }
 
+    public List<Pair<Command, Integer>> getCommandsAndId() {
+        List<Pair <Command, Integer>> commands = new ArrayList<>();
+        for (Transaction transaction : transactions) {
+            commands.add(new Pair<>(transaction.getCommand(), transaction.getId()));
+        }
+        return commands;
+    }
+
+    public long getTransactionCount() {
+        return transactions.size();
+    }
 
 
 }

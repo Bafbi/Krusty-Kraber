@@ -16,6 +16,7 @@ public class ServeurPage {
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
+                            Application.HeaderElement(),
                             h1(attrs(".text-lg "), "Serveur"),
                             ul(attrs(".grid grid-cols-2 gap-4"),
                                     each(restaurant.getEmployeManager().getEmployes(Serveur.class), serveur -> li(attrs(".serveur"),
@@ -37,6 +38,7 @@ public class ServeurPage {
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
+                            Application.HeaderElement(),
                             h1("Serveur " + serveurId),
                             // new transaction form
                             form(attrs("#new-transaction-form"),
@@ -69,6 +71,7 @@ public class ServeurPage {
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
+                            Application.HeaderElement(),
                             h1("Serveur " + serveurId),
                             h2("Transaction " + transactionId),
                             ul(attrs(".grid grid-cols-2 gap-4"),
@@ -128,9 +131,9 @@ public class ServeurPage {
                 ul(
                         // regrouper les recettes par nom et afficher le nom de la recette et le nombre de fois qu'elle est commandée
                         each(
-                                command.getRecettes().stream().distinct().toList(),
+                                command.getRecettesCommandes().keySet(),
                                 recette -> li(
-                                        command.recetteElement(recette),
+                                        recette.element(command.getRecettesCommandes().get(recette)),
                                         button("Supprimer")
                                                 .attr("hx-delete", "/api/serveur/" + serveurId + "/"+ transactionId +"/command?recette_id=" + recette.getId())
                                                 .attr("hx-target", "#command")
