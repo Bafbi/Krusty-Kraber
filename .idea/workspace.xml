@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="">
+    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="edit front (manager and server page)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/css/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/src/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/src/project.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Stock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/EquipeComposant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/EquipeComposant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Employe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/jobs/Employe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +163,8 @@
       <workItem from="1701342446432" duration="23487000" />
       <workItem from="1701851864398" duration="7499000" />
       <workItem from="1701871573041" duration="1281000" />
-      <workItem from="1701957940983" duration="8299000" />
+      <workItem from="1701957940983" duration="9148000" />
+      <workItem from="1701980733339" duration="6947000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -202,11 +198,25 @@
       <option name="project" value="LOCAL" />
       <updated>1701872269993</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="edit front (manager and server page)">
+      <option name="closed" value="true" />
+      <created>1701966510934</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701966510934</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:tailwindcss" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:postcss" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -224,6 +234,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="add readme + license" />
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="edit front (manager and server page)" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit front (manager and server page)" />
   </component>
 </project>

@@ -23,8 +23,7 @@ public class Application {
         return head(
                 meta().withCharset("utf-8"),
                 script().withSrc("/webjars/htmx.org/1.9.2/dist/htmx.min.js"),
-                link().withRel("stylesheet").withHref("/css/project.css"),
-                meta().withCharset("utf-8")
+                link().withRel("stylesheet").withHref("/css/project.css")
         );
     }
 
@@ -32,6 +31,7 @@ public class Application {
         // Create a new Javalin instance.
         // By default it will run on port 8080, but can be changed.
         var app = Javalin.create(javalinConfig -> {
+            javalinConfig.http.defaultContentType = "text/html;charset=UTF-8";
             javalinConfig.staticFiles.enableWebjars();
             javalinConfig.staticFiles.add(staticFileConfig -> {
                 staticFileConfig.hostedPath = "/css";
