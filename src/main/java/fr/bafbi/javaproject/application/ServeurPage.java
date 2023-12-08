@@ -1,11 +1,14 @@
 package fr.bafbi.javaproject.application;
 
+import fr.bafbi.javaproject.Boisson;
 import fr.bafbi.javaproject.Command;
 import fr.bafbi.javaproject.Restaurant;
 import fr.bafbi.javaproject.Transaction;
 import fr.bafbi.javaproject.jobs.Serveur;
 import io.javalin.Javalin;
 import j2html.tags.specialized.DivTag;
+
+import java.util.Arrays;
 
 import static j2html.TagCreator.*;
 
@@ -91,10 +94,17 @@ public class ServeurPage {
 
                                     ))
                             ),
+                            div(attrs(".grid grid-cols-2 gap-4"),
+                                    each(Arrays.stream(Boisson.values()).toList(), boisson -> div(attrs(".boisson"),
+                                            button(boisson.name())
+                                                    .attr("hx-put", "/api/restaurant/" + transactionId + "/boisson?boisson=" + boisson.name() + "&serveurId=" + serveurId)
+                                                    .attr("hx-target", "#command")
+                                                    .attr("hx-swap", "outerHTML")
+                                    )),
                             commandElement(transaction.getCommand(), serveurId, transactionId)
                     )
 
-            );
+            ));
             var rendered = "<!DOCTYPE html>\n" + content.render();
             ctx.html(rendered);
 
@@ -118,8 +128,17 @@ public class ServeurPage {
             var recette = restaurant.getRecette(recetteName);
             var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
             transaction.getCommand().addRecette(recette);
-            ctx.res().setContentType("text/plain; charset=utf-8");
             ctx.html(commandElement(transaction.getCommand(), serveurId, transactionId).render());
+        });
+
+        app.put("/api/restaurant/{transactionId}/boisson", ctx -> {
+            var transactionId = Integer.parseInt(ctx.pathParam("transactionId"));
+            var boisson = Boisson.valueOf(ctx.queryParam("boisson"));
+            var serveurId = Integer.parseInt(ctx.queryParam("serveurId"));
+
+            var command = restaurant.getTransactionManager().getTransaction(transactionId).getCommand();
+            command.addBoisson(boisson);
+            ctx.html(commandElement(command, serveurId, transactionId).render());
         });
 
         app.delete("/api/serveur/{serveurId}/{transactionId}/command", ctx -> {
@@ -129,6 +148,16 @@ public class ServeurPage {
             var recette = restaurant.getRecette(recetteName);
             var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
             transaction.getCommand().removeRecette(recette);
+            ctx.html(commandElement(transaction.getCommand(), serveurId, transactionId).render());
+        });
+
+        app.delete("/api/restaurant/{transactionId}/boisson", ctx -> {
+            var serveurId = Integer.parseInt(ctx.queryParam("serveurId"));
+            var transactionId = Integer.parseInt(ctx.pathParam("transactionId"));
+            var boissonName = ctx.queryParam("boisson");
+            var boisson = Boisson.valueOf(boissonName);
+            var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
+            transaction.getCommand().removeBoisson(boisson);
             ctx.html(commandElement(transaction.getCommand(), serveurId, transactionId).render());
         });
 
@@ -145,7 +174,7 @@ public class ServeurPage {
     }
     private static DivTag commandElement(Command command, int serveurId, int transactionId) {
         return div(attrs("#command"),
-                div(
+                ul(
                         each(
                                 command.getRecettesCommandes().keySet(),
                                 recette -> div(
@@ -155,6 +184,19 @@ public class ServeurPage {
                                                 .attr("hx-target", "#command")
                                                 .attr("hx-swap", "outerHTML")
                                                 .withId("command" + recette.getId())
+                                )
+                        )
+                ),
+                ul(
+                        each(
+                                command.getBoissonsCommandes().keySet(),
+                                boisson -> div(
+                                        boisson.element(command.getBoissonsCommandes().get(boisson)),
+                                        button("Supprimer")
+                                                .attr("hx-delete", "/api/restaurant/" + transactionId + "/boisson?boisson=" + boisson.name() + "&serveurId=" + serveurId)
+                                                .attr("hx-target", "#command")
+                                                .attr("hx-swap", "outerHTML")
+                                                .withId("command" + boisson.name())
                                 )
                         )
                 )

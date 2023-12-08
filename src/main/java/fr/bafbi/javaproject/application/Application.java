@@ -65,6 +65,7 @@ public class Application {
         ManagerPage.setup(app, restaurant);
         ServeurPage.setup(app, restaurant);
         CuisinePage.setup(app, restaurant);
+        BarPage.setup(app, restaurant);
 
         app.start();
     }
@@ -75,7 +76,8 @@ public class Application {
                         a("Home").withHref("/"),
                         a("Cuisine").withHref("/cuisine"),
                         a("Manager").withHref("/manager"),
-                        a("Serveur").withHref("/serveur")
+                        a("Serveur").withHref("/serveur"),
+                        a("Bar").withHref("/bar")
                 )
         );
     }

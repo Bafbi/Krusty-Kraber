@@ -14,6 +14,7 @@ import static j2html.TagCreator.*;
 public class CuisinePage {
 
     public static void setup(Javalin app, Restaurant restaurant) {
+
         app.get("/cuisine", ctx -> {
             var content = html(
                     Application.createHeadElement(),
