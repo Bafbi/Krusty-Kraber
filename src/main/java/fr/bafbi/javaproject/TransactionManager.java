@@ -20,7 +20,7 @@ public class TransactionManager {
     public List<Transaction> getTransactions(int serveurId) {
         List<Transaction> transactions = new ArrayList<>();
         for (Transaction transaction : this.transactions) {
-            if (transaction.getServeurId() == serveurId) {
+            if (transaction.getServeurId() == serveurId || serveurId == -1) {
                 transactions.add(transaction);
             }
         }

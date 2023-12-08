@@ -3,6 +3,7 @@ package fr.bafbi.javaproject.application;
 import fr.bafbi.javaproject.Restaurant;
 import fr.bafbi.javaproject.RestaurantState;
 import io.javalin.Javalin;
+import org.eclipse.jetty.server.session.JDBCSessionDataStore;
 
 import static j2html.TagCreator.*;
 

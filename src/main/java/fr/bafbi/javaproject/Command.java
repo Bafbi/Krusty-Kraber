@@ -5,10 +5,7 @@ import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.UlTag;
 import kotlin.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static j2html.TagCreator.*;
 
@@ -21,6 +18,15 @@ public class Command {
 
     public Map<Recette, Integer> getRecettesCommandes() {
         return recettesCommandes;
+    }
+
+    public Recette getRecette(String recetteId) {
+        for (Recette recette : recettesCommandes.keySet()) {
+            if (recette.getId().equals(recetteId)) {
+                return recette;
+            }
+        }
+        return null;
     }
 
     public Map<Recette, Integer> getRecettesPrepares() {
@@ -55,8 +61,24 @@ public class Command {
         recettesCommandes.put(recette, recettesCommandes.getOrDefault(recette, 0) + 1);
     }
 
+    public void prepareRecette(Recette recette) {
+        recettesPrepares.put(recette, recettesPrepares.getOrDefault(recette, 0) + 1);
+    }
+
+    public void prepareRecette(String recetteId) {
+        for (Recette recette : recettesCommandes.keySet()) {
+            if (recette.getId().equals(recetteId)) {
+                prepareRecette(recette);
+            }
+        }
+    }
+
     public void addBoisson(Boisson boisson) {
         boissonsCommandes.put(boisson, boissonsCommandes.getOrDefault(boisson, 0) + 1);
+    }
+
+    public void prepareBoisson(Boisson boisson) {
+        boissonsPrepares.put(boisson, boissonsPrepares.getOrDefault(boisson, 0) + 1);
     }
 
     public void removeRecette(Recette recette) {
@@ -75,5 +97,29 @@ public class Command {
         boissonsCommandes.put(boisson, boissonsCommandes.getOrDefault(boisson, 0) - 1);
     }
 
+    public boolean isRecetteReady(Recette recette) {
+        return Objects.equals(recettesCommandes.getOrDefault(recette, 0), recettesPrepares.getOrDefault(recette, 0));
+    }
+
+    public boolean isBoissonReady(Boisson boisson) {
+        return Objects.equals(boissonsCommandes.getOrDefault(boisson, 0), boissonsPrepares.getOrDefault(boisson, 0));
+    }
+
+    public boolean isReady() {
+        if (recettesCommandes.isEmpty() && boissonsCommandes.isEmpty()) {
+            return false;
+        }
+        for (Recette recette : recettesCommandes.keySet()) {
+            if (!isRecetteReady(recette)) {
+                return false;
+            }
+        }
+        for (Boisson boisson : boissonsCommandes.keySet()) {
+            if (!isBoissonReady(boisson)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
