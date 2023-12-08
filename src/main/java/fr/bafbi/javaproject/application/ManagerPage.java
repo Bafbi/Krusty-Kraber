@@ -48,6 +48,15 @@ public class ManagerPage {
             ctx.html(rendered);
 
         });
+
+        app.patch("/api/restaurant/toggle", ctx -> {
+            if (state == RestaurantState.CLOSE) {
+                restaurant.setState(RestaurantState.OPEN);
+            } else {
+                restaurant.setState(RestaurantState.CLOSE);
+            }
+            ctx.html(state.toString());
+        });
     }
 
 }

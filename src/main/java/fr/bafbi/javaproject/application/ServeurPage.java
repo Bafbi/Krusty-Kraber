@@ -1,15 +1,13 @@
 package fr.bafbi.javaproject.application;
 
-import fr.bafbi.javaproject.Command;
-import fr.bafbi.javaproject.Recette;
-import fr.bafbi.javaproject.Restaurant;
-import fr.bafbi.javaproject.Transaction;
+import fr.bafbi.javaproject.*;
 import fr.bafbi.javaproject.jobs.Serveur;
 import io.javalin.Javalin;
 import j2html.tags.specialized.DivTag;
 
+import java.util.Arrays;
+
 import static j2html.TagCreator.*;
-import java.util.TreeMap;
 
 public class ServeurPage {
 
@@ -95,30 +93,36 @@ public class ServeurPage {
 
                             h1("Transaction " + transactionId),
                             h2("Plats proposés : "),
-                            div(attrs(".grid grid-cols-1 gap-10"),
-                                    div(attrs(".grid grid-rows-"+nbRecettes + " gap-4"),
+                            div(attrs(".flex flex-col gap-10"),
                                             each(restaurant.getRecettes(),
-                                                    recette -> div(attrs(".recette grid grid-cols-2"),
+                                                    recette -> div(attrs(".flex flex-row w-full gap-10 justify-between"),
                                                             div(attrs(".flex flex-row"),
-                                                                button(attrs(".w-1/6"), recette.getName())
+                                                                button(attrs("."), recette.getName())
                                                                     .attr("hx-put", "/api/serveur/" + serveurId + "/" + transactionId + "/command?recette_id=" + recette.getId())
-                                                                    .attr("hx-target", "#commandElement"+recette.getName())
-                                                                    .attr("hx-swap", "outerHTML")
-                                                                    .attr("hx-vals", "recette_zzid=" + recette.getId()),
+                                                                        .attr("hx-target", "#command-" + recette.getId())
+                                                                        .attr("hx-swap", "outerHTML"),
                                                                 div(attrs(".flex flex-row"),
-                                                                        span("Prix: " + recette.getPrice()),
-                                                                        span(rawHtml("&#8364;"))
+                                                                        span("Prix: " + recette.getPrice() + "€")
                                                                 )),
-                                                            div(
-                                                                    commandElement(recette,serveurId,transactionId,transaction.getCommand())
-                                                            ).attr("id","commandElement"+recette.getName())
+                                                            commandRecetteElement(recette, serveurId, transactionId, transaction.getCommand())
 
-                                                    ).attr("id","#command"+recette.getName())
-                                            )
-//                                            commandsElement(transaction.getCommand(), serveurId, transactionId)
+                                                    )
+                                            ),
+                                    each(
+                                            Arrays.stream(Boisson.values()).toList(), boisson -> div(attrs(".flex flex-row w-full gap-10 justify-between"),
+                                                    div(attrs(".flex flex-row"),
+                                                            button(attrs("."), boisson.name())
+                                                                    .attr("hx-put", "/api/transaction/" + transactionId + "/boisson?boisson_id=" + boisson.name() + "&serveur_id=" + serveurId)
+                                                                    .attr("hx-target", "#command-" + boisson.name())
+                                                                    .attr("hx-swap", "outerHTML"),
+                                                            div(attrs(".flex flex-row"),
+                                                                    span("Prix: " + boisson.getPrice() + "€")
+                                                            )),
+                                                    commandBoissonElement(boisson, serveurId, transactionId, transaction.getCommand())
+                                            ))
                                     )
 
-                                )
+
                             )
                     );
 
@@ -147,7 +151,7 @@ public class ServeurPage {
             var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
             transaction.getCommand().addRecette(recette);
 //            ctx.html(commandsElement(transaction.getCommand(), serveurId, transactionId).render());
-            ctx.html(commandElement(recette, serveurId, transactionId,transaction.getCommand()).render());
+            ctx.html(commandRecetteElement(recette, serveurId, transactionId, transaction.getCommand()).render());
 
         });
 
@@ -159,7 +163,28 @@ public class ServeurPage {
             var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
             transaction.getCommand().removeRecette(recette);
 //            ctx.html(commandsElement(transaction.getCommand(), serveurId, transactionId).render());
-            ctx.html(commandElement(recette, serveurId, transactionId,transaction.getCommand()).render());
+            ctx.html(commandRecetteElement(recette, serveurId, transactionId, transaction.getCommand()).render());
+
+        });
+
+        app.put("/api/transaction/{transactionId}/boisson", ctx -> {
+            var transactionId = Integer.parseInt(ctx.pathParam("transactionId"));
+            var boissonName = ctx.queryParam("boisson_id");
+            var serveurId = Integer.parseInt(ctx.queryParam("serveur_id"));
+            var boisson = Boisson.valueOf(boissonName);
+            var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
+            transaction.getCommand().addBoisson(boisson);
+            ctx.html(commandBoissonElement(boisson, serveurId, transactionId, transaction.getCommand()).render());
+
+        });
+
+        app.delete("/api/transaction/{transactionId}/boisson", ctx -> {
+            var transactionId = Integer.parseInt(ctx.pathParam("transactionId"));
+            var boissonName = ctx.queryParam("boisson_id");
+            var boisson = Boisson.valueOf(boissonName);
+            var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
+            transaction.getCommand().removeBoisson(boisson);
+            ctx.html(commandBoissonElement(boisson, 0, transactionId, transaction.getCommand()).render());
 
         });
 
@@ -174,19 +199,28 @@ public class ServeurPage {
                     );
     }
 
-    private static DivTag commandElement(Recette recette, int serveurId, int transactionId,Command command) {
+    private static DivTag commandRecetteElement(Recette recette, int serveurId, int transactionId, Command command) {
 
-        return div(attrs("#commandElement"+recette.getName()),
-                div(attrs(".flex flex-row self-center items-center"),
-//                        h3(recette.getName()),
+        return
+                div(attrs("#command-" + recette.getId() + " .flex flex-row self-center items-center"),
                         command.getRecettesCommandes().getOrDefault(recette, 0) > 0 ? recette.element(command.getRecettesCommandes().get(recette)) : null,
                         command.getRecettesCommandes().getOrDefault(recette, 0) > 0 ? button("Supprimer")
-                                        .attr("hx-delete", "/api/serveur/" + serveurId + "/"+ transactionId +"/command?recette_id=" + recette.getId())
-                                        .attr("hx-target", "#commandElement"+recette.getName())
-                                        .attr("hx-swap", "outerHTML")
-                                        .withId("command" + recette.getId()) : null
-                        )
-        );
+                                .attr("hx-delete", "/api/serveur/" + serveurId + "/" + transactionId + "/command?recette_id=" + recette.getId() + "&serveur_id=" + serveurId)
+                                .attr("hx-target", "#command-" + recette.getId())
+                                .attr("hx-swap", "outerHTML") : null
+                );
+    }
+
+    private static DivTag commandBoissonElement(Boisson boisson, int serveurId, int transactionId, Command command) {
+
+        return
+                div(attrs("#command-" + boisson.name() + " .flex flex-row self-center items-center"),
+                        command.getBoissonsCommandes().getOrDefault(boisson, 0) > 0 ? boisson.element(command.getBoissonsCommandes().get(boisson)) : null,
+                        command.getBoissonsCommandes().getOrDefault(boisson, 0) > 0 ? button("Supprimer")
+                                .attr("hx-delete", "/api/transaction/" + transactionId + "/boisson?boisson_id=" + boisson.name())
+                                .attr("hx-target", "#command-" + boisson.name())
+                                .attr("hx-swap", "outerHTML") : null
+                        );
     }
 
 

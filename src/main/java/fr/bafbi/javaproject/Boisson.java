@@ -24,10 +24,8 @@ public enum Boisson {
     }
 
     public DomContent element(int quantity) {
-        return div(
-                h3(name()),
-                span("Prix: " + getPrice()),
-                span(rawHtml("&#8364;")),
+        return div(attrs(".flex flex-row gap-5"),
+                span("Prix: " + getPrice() * quantity + "€"),
                 quantity > 1 ? span("Quantité: " + quantity): null
         );
     }
