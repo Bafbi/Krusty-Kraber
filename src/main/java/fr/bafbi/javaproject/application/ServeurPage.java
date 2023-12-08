@@ -179,39 +179,15 @@ public class ServeurPage {
         return div(attrs("#commandElement"+recette.getName()),
                 div(attrs(".flex flex-row self-center items-center"),
 //                        h3(recette.getName()),
-                        command.getRecettesCommandes().get(recette) != null ? recette.element(command.getRecettesCommandes().get(recette)) : null,
-                        button("Supprimer")
+                        command.getRecettesCommandes().getOrDefault(recette, 0) > 0 ? recette.element(command.getRecettesCommandes().get(recette)) : null,
+                        command.getRecettesCommandes().getOrDefault(recette, 0) > 0 ? button("Supprimer")
                                         .attr("hx-delete", "/api/serveur/" + serveurId + "/"+ transactionId +"/command?recette_id=" + recette.getId())
                                         .attr("hx-target", "#commandElement"+recette.getName())
                                         .attr("hx-swap", "outerHTML")
-                                        .withId("command" + recette.getId())
+                                        .withId("command" + recette.getId()) : null
                         )
         );
     }
 
-    private static DivTag commandsElement(Command command, int serveurId, int transactionId) {
-
-//        TreeMap<String, String> map1 = new TreeMap<>(command.getRecettesCommandes().keySet());
-
-//        for (Recette r : command.getRecettesCommandes().keySet()) {
-//            Restaurant.getLogger().info(r.toString());
-//
-//        }
-
-        return div(attrs("#command"),
-                        each(
-                                command.getRecettesCommandes().keySet(),
-                                recette -> div(attrs(".flex flex-row self-center items-center"),
-                                        recette.element(command.getRecettesCommandes().get(recette)),
-                                        button("Supprimer")
-                                                .attr("hx-delete", "/api/serveur/" + serveurId + "/"+ transactionId +"/command?recette_id=" + recette.getId())
-                                                .attr("hx-target", "#command"+recette.getName())
-                                                .attr("hx-swap", "outerHTML")
-                                                .withId("command" + recette.getId())
-                                ).attr("id","#command"+recette.getName())
-
-                        )
-        );
-    }
 
 }
