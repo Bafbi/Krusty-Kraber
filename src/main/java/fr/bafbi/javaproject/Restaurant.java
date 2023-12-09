@@ -4,11 +4,12 @@ import fr.bafbi.javaproject.jobs.Cuisinier;
 import fr.bafbi.javaproject.jobs.Serveur;
 import org.slf4j.Logger;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Restaurant {
 
-    private final Stock stocks = new Stock();
+    private final Stock stocks;
     private final EmployeManager employeManager = new EmployeManager();
     private final Cuisine cuisine;
     private final Salle salle;
@@ -23,6 +24,8 @@ public class Restaurant {
 
     public Restaurant(List<Recette> recettes) {
         this.recettes = recettes;
+        var defaultStocks = Arrays.stream(Ingredient.values()).collect(java.util.stream.Collectors.toMap(ingredient -> ingredient, ingredient -> 100));
+        this.stocks = new Stock(defaultStocks);
         this.salle = new Salle(stocks, employeManager);
         this.cuisine = new Cuisine(stocks, employeManager, recettes, transactionManager.getCommands());
     }

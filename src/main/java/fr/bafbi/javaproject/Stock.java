@@ -1,8 +1,6 @@
 package fr.bafbi.javaproject;
 
-import j2html.tags.specialized.DivTag;
-import j2html.tags.specialized.LiTag;
-import j2html.tags.specialized.UlTag;
+import j2html.tags.DomContent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +12,21 @@ public class Stock {
     private final Map<Ingredient, Integer> stocks = new HashMap<>();
     private Map<Ingredient, Integer> defaultStocks;
 
+    public Stock(Map<Ingredient, Integer> defaultStocks) {
+        this.defaultStocks = defaultStocks;
+        this.stocks.putAll(defaultStocks);
+    }
+
     public void addStock(Ingredient ingredient, int quantity) {
-        stocks.put(ingredient, quantity);
+        stocks.put(ingredient, stocks.get(ingredient) + quantity);
     }
 
     public void takeStock(Ingredient ingredient, int quantity) throws NotSufficientStockException {
         stocks.put(ingredient, stocks.get(ingredient) - quantity);
+    }
+
+    public int getStock(Ingredient ingredient) {
+        return stocks.get(ingredient);
     }
 
     public Map<Ingredient, Integer> diffStocks() {
@@ -34,30 +41,31 @@ public class Stock {
         this.defaultStocks = defaultStocks;
     }
 
-    public LiTag createStockElement(Ingredient ingredient) {
-        return li(attrs(".stock"),
-                h2(ingredient.name()),
-                span(stocks.get(ingredient).toString())
-        );
-
+    public void resetStocks() {
+        this.stocks.putAll(defaultStocks);
     }
 
-    public DivTag createStockElementButton(Ingredient ingredient) {
-        return div(attrs(".stock"),
+    public Map<Ingredient, Integer> refillStocks() {
+        Map<Ingredient, Integer> diff = diffStocks();
+        // reset stocks that are below default
+        for (Map.Entry<Ingredient, Integer> entry : diff.entrySet()) {
+            if (entry.getValue() < 0) {
+                stocks.put(entry.getKey(), defaultStocks.get(entry.getKey()));
+            }
+        }
+        return diff;
+    }
+
+    public DomContent element(Ingredient ingredient) {
+        return div(attrs("#stock-" + ingredient.name()),
                 h3(ingredient.name()),
-                span(stocks.get(ingredient).toString()),
-                button("+1").attr("hx-post", "/increment")
-                        .attr("hx-target", "#counter")
-                        .attr("hx-swap", "outerHTML")   ,
-                button("-1")
+                div(attrs(".flex flex-row gap-5"),
+                        span("Quantité: "),
+                        span("x" + stocks.get(ingredient).toString()),
+                        span(attrs(".text-outline text-md"), "x" + defaultStocks.get(ingredient).toString())
+                )
         );
 
-    }
-    public UlTag createStocksElement() {
-        return ul(attrs(".flex flex-row gap-2"), each(stocks.keySet(), this::createStockElement));
-    }
-    public DivTag createStocksElementWButton() {
-        return div(attrs(".grid grid-cols-5 gap-2"), each(stocks.keySet(), this::createStockElementButton));
     }
 
     public static class NotSufficientStockException extends Exception {

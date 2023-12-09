@@ -47,19 +47,6 @@ public class Main {
                 salade
         ));
 
-        var stocks = restaurant.getStocks();
-
-        // Add some ingredients to the restaurant's stock
-        stocks.addStock(Ingredient.PAIN, 10);
-        stocks.addStock(Ingredient.FROMAGE, 10);
-        stocks.addStock(Ingredient.BOEUF, 10);
-        stocks.addStock(Ingredient.SAUCISSE, 10);
-        stocks.addStock(Ingredient.PATE, 10);
-        stocks.addStock(Ingredient.TOMATE, 10);
-        stocks.addStock(Ingredient.CHAMPIGNON, 10);
-        stocks.addStock(Ingredient.OIGNON, 10);
-        stocks.addStock(Ingredient.SALADE, 10);
-
         // Hire some employees
         var equipes = restaurant.getEmployeManager();
 

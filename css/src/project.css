@@ -34,11 +34,7 @@ a {
 
 /*div interne*/
 .intradiv {
-    @apply bg-surface-variant p-1 rounded-lg;
-}
-
-.intradiv > h2, .intradiv > h3 {
-    @apply text-primary;
+    @apply bg-tertiary-container p-2 rounded-lg;
 }
 
 /*form serveur*/
