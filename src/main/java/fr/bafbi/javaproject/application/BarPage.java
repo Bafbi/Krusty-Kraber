@@ -43,7 +43,7 @@ public class BarPage {
                     Application.createHeadElement(),
                     body(
                             Application.HeaderElement(),
-                            h1("Barman " + barmanId),
+                            h1("Barman " + barmanId + " - "+restaurant.getEmployeManager().getEmploye(barmanId).getNom()),
                             // show commands
                             ul(attrs("#commands"),
                                     each(restaurant.getTransactionManager().getCommandsAndId(), command -> li(attrs(".command"),

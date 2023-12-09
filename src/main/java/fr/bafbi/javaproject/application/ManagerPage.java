@@ -27,15 +27,17 @@ public class ManagerPage {
                     body(attrs(".bg-background"),
                             Application.HeaderElement(),
                             h1("Manager"),
-                            div(attrs(".grid grid-cols-2 gap-5"),
-                                    div(attrs(".intradiv"),
-                                            h2("Stocks : "),
+                            div(attrs(".grid grid-cols-4 gap-5"),
+                                    div(attrs(".intradiv col-span-3"),
+                                            h2(attrs(".font-bold .text-center"),"Stocks"),
                                             restaurant.getStocks().createStocksElementWButton()),
-                                    div(attrs(".intradiv"),
-                                            h2("Etat du restaurant : "),
-                                            manage_open),
-                                    div(attrs(".intradiv col-span-2"),
-                                            h2("Gestion des equipes : "),
+                                    div(attrs(".intradiv text-center"),
+                                            h2(attrs(".font-bold .text-center"),"Etat du restaurant"),
+                                            manage_open,
+                                            h2(attrs(".font-bold .text-center"),"Refaire les Stocks"),
+                                            button("Acheter")),
+                                    div(attrs(".intradiv col-span-4"),
+                                            h2(attrs(".font-bold .text-center"),"Gestion des equipes"),
                                             equipeComposant.element()
                                     )
                             )
@@ -52,19 +54,11 @@ public class ManagerPage {
         app.patch("/api/restaurant/toggle", ctx -> {
             int newState = restaurant.getState().ordinal()+1;
             restaurant.setState(RestaurantState.values()[newState%3]);
-//            if (state == RestaurantState.CLOSE) {
-//                restaurant.setState(RestaurantState.OPEN);
-//            } else {
-//                restaurant.setState(RestaurantState.CLOSE);
-//            }
-//            state = restaurant.getState();
             ctx.html(
                     button(attrs(".bg-primary p-2"), span(restaurant.getState().toString()))
                     .attr("hx-patch", "/api/restaurant/toggle")
                     .attr("hx-swap", "outerHTML").render()
             );
-
-//            ctx.html(state.toString());
         });
     }
 

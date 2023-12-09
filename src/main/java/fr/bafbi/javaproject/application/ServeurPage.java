@@ -39,7 +39,7 @@ public class ServeurPage {
                     Application.createHeadElement(),
                     body(
                             Application.HeaderElement(),
-                            h1("Serveur " + serveurId),
+                            h1("Serveur " + serveurId+ " - "+restaurant.getEmployeManager().getEmploye(serveurId).getNom()),
                             div(attrs(".grid grid-rows-2"),
                                 // new transaction form
                                 form(attrs("#new-transaction-form"),
@@ -82,7 +82,7 @@ public class ServeurPage {
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
                             Application.HeaderElement(),
-                            h1("Serveur " + serveurId),
+                            h1("Serveur " + serveurId+ " - "+restaurant.getEmployeManager().getEmploye(serveurId).getNom()),
                             h2("Transactions en cours : "),
                             div(attrs("#osef"),
                                     div(attrs("#transactions .grid grid-cols-5 gap-2"),

@@ -74,7 +74,7 @@ public class Application {
 
     public static HeaderTag HeaderElement() {
         return header(
-                nav(attrs(".flex .flex-row .justify-between .items-center .bg-background .p-4"),
+                nav(attrs(".flex .flex-row .justify-between .items-center .p-4"),
                         a("Home").withHref("/"),
                         a("Cuisine").withHref("/cuisine"),
                         a("Manager").withHref("/manager"),
