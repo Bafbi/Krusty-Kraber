@@ -14,4 +14,4 @@ module.exports = withMaterialColors({
     plugins: [
         require('@tailwindcss/typography'),
     ],
-}, {primary: '#ffa4a4',});
+}, {primary: '#ffa4a4',success:'#4ade80'});

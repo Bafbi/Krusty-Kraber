@@ -50,12 +50,21 @@ public class ManagerPage {
         });
 
         app.patch("/api/restaurant/toggle", ctx -> {
-            if (state == RestaurantState.CLOSE) {
-                restaurant.setState(RestaurantState.OPEN);
-            } else {
-                restaurant.setState(RestaurantState.CLOSE);
-            }
-            ctx.html(state.toString());
+            int newState = restaurant.getState().ordinal()+1;
+            restaurant.setState(RestaurantState.values()[newState%3]);
+//            if (state == RestaurantState.CLOSE) {
+//                restaurant.setState(RestaurantState.OPEN);
+//            } else {
+//                restaurant.setState(RestaurantState.CLOSE);
+//            }
+//            state = restaurant.getState();
+            ctx.html(
+                    button(attrs(".bg-primary p-2"), span(restaurant.getState().toString()))
+                    .attr("hx-patch", "/api/restaurant/toggle")
+                    .attr("hx-swap", "outerHTML").render()
+            );
+
+//            ctx.html(state.toString());
         });
     }
 

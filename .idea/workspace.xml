@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="edit front (manager and server page)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/src/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/src/project.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/css/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/RestaurantState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/RestaurantState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/BarPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/BarPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
