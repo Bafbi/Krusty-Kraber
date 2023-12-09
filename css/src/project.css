@@ -40,6 +40,9 @@ a {
 .intradiv > h2, .intradiv > h3 {
     @apply text-primary;
 }
+.intradiv2 {
+    @apply bg-secondary-container p-1 rounded-lg;
+}
 
 /*form serveur*/
 #new-transaction-form > *{

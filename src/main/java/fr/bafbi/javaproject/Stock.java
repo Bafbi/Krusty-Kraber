@@ -57,7 +57,10 @@ public class Stock {
         return ul(attrs(".flex flex-row gap-2"), each(stocks.keySet(), this::createStockElement));
     }
     public DivTag createStocksElementWButton() {
-        return div(attrs(".grid grid-cols-5 gap-2"), each(stocks.keySet(), this::createStockElementButton));
+        return div(attrs(".grid grid-cols-5 gap-2"),
+                each(stocks.keySet(),
+                        this::createStockElementButton)
+                );
     }
 
     public static class NotSufficientStockException extends Exception {

@@ -76,8 +76,8 @@ public class ServeurPage {
             var transactionId = Integer.parseInt(ctx.pathParam("transactionId"));
             var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
 
-            int nbRecettes = restaurant.getRecettes().size();
-
+//            int nbRecettes = restaurant.getRecettes().size();
+            String transaction_state = transaction.getCommand().isReady()?"Prête":"En préparation";
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
@@ -91,7 +91,7 @@ public class ServeurPage {
                                     )
                             ),
 
-                            h1("Transaction " + transactionId),
+                            h1("Transaction " + transactionId+" - Etat : "+transaction_state),
                             div(attrs(".grid grid-cols-2 gap-10"),
                                     div(attrs(".intradiv"),
                                     h2("Carte des plats : "),
@@ -195,13 +195,14 @@ public class ServeurPage {
 
     }
     private static DivTag transactionElement(Transaction transaction, int serveurId) {
+        String color_on_state = transaction.getCommand().isReady()?"text-success":"text-on-error-container";
 
-        return  div(attrs(".transaction intradiv"),
-                            h3("Table " + transaction.tableId() + " - " + transaction.getClientNumber() + " clients"),
+        return  div(attrs(".transaction intradiv2"),
+                            h3(attrs("."+color_on_state), "Table " + transaction.tableId() + " - " + transaction.getClientNumber() + " clients - Tx "+transaction.getId()),
                             div(attrs(".grid grid-cols-2 gap-2"),
                                     a("Commander").withHref("/serveur/" + serveurId + "/" + transaction.getId()),
                                     a("Terminer").withHref("/serveur/" + serveurId + "/" + transaction.getId()))
-                    );
+        );
     }
 
     private static DivTag commandRecetteElement(Recette recette, int serveurId, int transactionId, Command command) {

@@ -41,7 +41,8 @@ public class CuisinePage {
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
                             Application.HeaderElement(),
-                            h1("Cuisinier " + cuisinerId),
+
+                            h1("Cuisinier " + cuisinerId+ " - "+restaurant.getEmployeManager().getEmploye(cuisinerId).getNom()),
                             // show commands
                             ul(attrs("#commands"),
                                     each(restaurant.getTransactionManager().getCommandsAndId(), command -> li(attrs(".command"),
@@ -72,7 +73,10 @@ public class CuisinePage {
     private static DivTag recetteElement(Command command, Recette recette, int transactionId) {
         return div(attrs(".recette"),
                 span(recette.getName()),
-                !command.isRecetteReady(recette) ? span(" (x" + Optional.ofNullable(command.getRecettes().get(recette).component2()).orElse(0) + "/x" + command.getRecettes().get(recette).component1() + ")") : span("Ready (x" + command.getRecettes().get(recette).component1() + ")"),
+                !command.isRecetteReady(recette) ?
+                        span(" (x" + Optional.ofNullable(command.getRecettes().get(recette).component2()).orElse(0) + "/x" + command.getRecettes().get(recette).component1() + ")")
+                        :
+                        span(attrs(".text-success")," Ready (x" + command.getRecettes().get(recette).component1() + ")"),
                 !command.isRecetteReady(recette) ? button("x1 Prêt")
                         .attr("hx-post", "/api/cuisine/command/" + transactionId + "/ready?recetteId=" + recette.getId())
                         .attr("hx-params", "recetteId")

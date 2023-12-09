@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="modif btn de chgt etat resto, affichage serveur/bar">
+    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="petite update cuisine et manager">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/src/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/src/project.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/BarPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/BarPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/css/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Stock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/CuisinePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/CuisinePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
@@ -81,28 +82,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/jobs&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sacha/Desktop/temp/Krusty-Kraber&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_directory_selection": "/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/jobs",
+    "last_opened_file_path": "C:/Users/sacha/Desktop/temp/Krusty-Kraber",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/bafbi/school/java/javaproject/src/main/java/fr/bafbi/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.bafbi" />
@@ -167,6 +171,7 @@
       <workItem from="1701871573041" duration="1281000" />
       <workItem from="1701957940983" duration="9148000" />
       <workItem from="1701980733339" duration="6947000" />
+      <workItem from="1702135595174" duration="7810000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -216,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702088724949</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="petite update cuisine et manager">
+      <option name="closed" value="true" />
+      <created>1702091087056</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702091087056</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +259,7 @@
     <MESSAGE value="push" />
     <MESSAGE value="edit front (manager and server page)" />
     <MESSAGE value="modif btn de chgt etat resto, affichage serveur/bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="modif btn de chgt etat resto, affichage serveur/bar" />
+    <MESSAGE value="petite update cuisine et manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="petite update cuisine et manager" />
   </component>
 </project>
