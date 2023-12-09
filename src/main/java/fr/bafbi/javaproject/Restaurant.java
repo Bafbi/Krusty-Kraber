@@ -11,8 +11,6 @@ public class Restaurant {
 
     private final Stock stocks;
     private final EmployeManager employeManager = new EmployeManager();
-    private final Cuisine cuisine;
-    private final Salle salle;
     private final List<Recette> recettes;
     private final TransactionManager transactionManager = new TransactionManager();
 
@@ -26,8 +24,6 @@ public class Restaurant {
         this.recettes = recettes;
         var defaultStocks = Arrays.stream(Ingredient.values()).collect(java.util.stream.Collectors.toMap(ingredient -> ingredient, ingredient -> 100));
         this.stocks = new Stock(defaultStocks);
-        this.salle = new Salle(stocks, employeManager);
-        this.cuisine = new Cuisine(stocks, employeManager, recettes, transactionManager.getCommands());
     }
 
     public Stock getStocks() {
