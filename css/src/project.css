@@ -36,6 +36,9 @@ a {
 .intradiv {
     @apply bg-tertiary-container p-2 rounded-lg;
 }
+.intradiv2 {
+    @apply bg-secondary-container p-1 rounded-lg;
+}
 
 /*form serveur*/
 #new-transaction-form > *{
