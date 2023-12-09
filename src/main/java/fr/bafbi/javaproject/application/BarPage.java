@@ -41,9 +41,9 @@ public class BarPage {
 
             var content = html(
                     Application.createHeadElement(),
-                    body(attrs(".bg-background"),
+                    body(
                             Application.HeaderElement(),
-                            h1("Barman " + barmanId),
+                            h1("Barman " + barmanId + " - "+restaurant.getEmployeManager().getEmploye(barmanId).getNom()),
                             // show commands
                             ul(attrs("#commands"),
                                     each(restaurant.getTransactionManager().getCommandsAndId(), command -> li(attrs(".command"),
@@ -72,8 +72,11 @@ public class BarPage {
 
     private static DivTag boissonElement(Command command, Boisson boisson, int transactionId) {
         return div(attrs(".boisson"),
-                span(boisson.name()),
-                !command.isBoissonReady(boisson) ? span(" (x" + Optional.ofNullable(command.getBoissons().get(boisson).component2()).orElse(0) + "/x" + command.getBoissons().get(boisson).component1() + ")") : span("Ready (x" + command.getBoissons().get(boisson).component1() + ")"),
+                span(boisson.name()+" "),
+                !command.isBoissonReady(boisson) ?
+                        span(" (x" + Optional.ofNullable(command.getBoissons().get(boisson).component2()).orElse(0) + "/x" + command.getBoissons().get(boisson).component1() + ")")
+                        :
+                        span(attrs(".text-success"),"Ready (x" + command.getBoissons().get(boisson).component1() + ")"),
                 !command.isBoissonReady(boisson) ? button("x1 Prêt")
                         .attr("hx-patch", "/api/restaurant/" + transactionId + "/boisson?boisson=" + boisson.name())
                         .attr("hx-params", "boisson")

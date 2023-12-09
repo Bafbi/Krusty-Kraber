@@ -39,7 +39,7 @@ public class ServeurPage {
                     Application.createHeadElement(),
                     body(
                             Application.HeaderElement(),
-                            h1("Serveur " + serveurId),
+                            h1("Serveur " + serveurId+ " - "+restaurant.getEmployeManager().getEmploye(serveurId).getNom()),
                             div(attrs(".grid grid-rows-2"),
                                 // new transaction form
                                 form(attrs("#new-transaction-form"),
@@ -82,7 +82,7 @@ public class ServeurPage {
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
                             Application.HeaderElement(),
-                            h1("Serveur " + serveurId),
+                            h1("Serveur " + serveurId+ " - "+restaurant.getEmployeManager().getEmploye(serveurId).getNom()),
                             h2("Transactions en cours : "),
                             div(attrs("#osef"),
                                     div(attrs("#transactions .grid grid-cols-5 gap-2"),
@@ -92,8 +92,9 @@ public class ServeurPage {
                             ),
 
                             h1("Transaction " + transactionId),
-                            h2("Plats proposés : "),
-                            div(attrs(".flex flex-col gap-10"),
+                            div(attrs(".grid grid-cols-2 gap-10"),
+                                    div(attrs(".intradiv"),
+                                    h2("Carte des plats : "),
                                             each(restaurant.getRecettes(),
                                                     recette -> div(attrs(".flex flex-row w-full gap-10 justify-between"),
                                                             div(attrs(".flex flex-row"),
@@ -107,19 +108,23 @@ public class ServeurPage {
                                                             commandRecetteElement(recette, serveurId, transactionId, transaction.getCommand())
 
                                                     )
-                                            ),
-                                    each(
-                                            Arrays.stream(Boisson.values()).toList(), boisson -> div(attrs(".flex flex-row w-full gap-10 justify-between"),
-                                                    div(attrs(".flex flex-row"),
-                                                            button(attrs("."), boisson.name())
-                                                                    .attr("hx-put", "/api/transaction/" + transactionId + "/boisson?boisson_id=" + boisson.name() + "&serveur_id=" + serveurId)
-                                                                    .attr("hx-target", "#command-" + boisson.name())
-                                                                    .attr("hx-swap", "outerHTML"),
-                                                            div(attrs(".flex flex-row"),
-                                                                    span("Prix: " + boisson.getPrice() + "€")
-                                                            )),
-                                                    commandBoissonElement(boisson, serveurId, transactionId, transaction.getCommand())
-                                            ))
+                                            )
+                                    ),
+                                    div(attrs(".intradiv"),
+                                        h2("Carte des Boissons : "),
+                                        each(
+                                                Arrays.stream(Boisson.values()).toList(), boisson -> div(attrs(".flex flex-row w-full gap-10 justify-between"),
+                                                        div(attrs(".flex flex-row"),
+                                                                button(attrs("."), boisson.name())
+                                                                        .attr("hx-put", "/api/transaction/" + transactionId + "/boisson?boisson_id=" + boisson.name() + "&serveur_id=" + serveurId)
+                                                                        .attr("hx-target", "#command-" + boisson.name())
+                                                                        .attr("hx-swap", "outerHTML"),
+                                                                div(attrs(".flex flex-row"),
+                                                                        span("Prix: " + boisson.getPrice() + "€")
+                                                                )),
+                                                        commandBoissonElement(boisson, serveurId, transactionId, transaction.getCommand())
+                                                ))
+                                        )
                                     )
 
 

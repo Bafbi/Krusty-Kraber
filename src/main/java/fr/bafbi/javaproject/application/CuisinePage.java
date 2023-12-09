@@ -45,11 +45,13 @@ public class CuisinePage {
                             // show commands
                             ul(attrs("#commands"),
                                     each(restaurant.getTransactionManager().getCommandsAndId(), command -> li(attrs(".command"),
-                                            ul(attrs(".recettes"),
+                                            div(
+                                                h2("Commande N°" + command.component2().toString()),
+                                                ul(attrs(".recettes"),
                                                     each(command.component1().getRecettes().keySet(), recette -> li(attrs(".recette"),
                                                             recetteElement(command.component1(), recette, command.component2())
                                                     ))
-                                            )
+                                            ))
                                     ))
                             )
                     )

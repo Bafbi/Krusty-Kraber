@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="edit front (manager and server page)">
+    <list default="true" id="f62fdd22-d1b4-430c-adfd-9b061843b914" name="Changes" comment="modif btn de chgt etat resto, affichage serveur/bar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/src/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/src/project.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/Recette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/BarPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/BarPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/CuisinePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/CuisinePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ManagerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/bafbi/javaproject/application/ServeurPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701966510934</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modif btn de chgt etat resto, affichage serveur/bar">
+      <option name="closed" value="true" />
+      <created>1702088724949</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702088724949</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +245,7 @@
     <MESSAGE value="add readme + license" />
     <MESSAGE value="push" />
     <MESSAGE value="edit front (manager and server page)" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit front (manager and server page)" />
+    <MESSAGE value="modif btn de chgt etat resto, affichage serveur/bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif btn de chgt etat resto, affichage serveur/bar" />
   </component>
 </project>
