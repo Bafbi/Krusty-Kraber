@@ -31,12 +31,16 @@ public class ManagerPage {
                                             h2(attrs(".font-bold .text-center"), "Stocks"),
                                             stocksElement(restaurant.getStocks())),
                                     div(attrs(".intradiv text-center"),
-                                            h2(attrs(".font-bold .text-center"), "Etat du restaurant"),
-                                            stateElement(restaurant.getState()),
-                                            h2(attrs(".font-bold .text-center"), "Refaire les Stocks"),
-                                            button("Acheter")).attr("hx-post", "/api/stock/refill")
-                                                              .attr("hx-swap", "outerHTML")
-                                                              .attr("hx-target", "#stocks"),
+                                            div(
+                                                    h2(attrs(".font-bold .text-center"), "Etat du restaurant"),
+                                                    stateElement(restaurant.getState())
+                                            ),
+                                            div(
+                                                    h2(attrs(".font-bold .text-center"), "Refaire les Stocks"),
+                                                    button("Acheter")
+                                                            .attr("hx-post", "/api/stock/refill")
+                                                            .attr("hx-swap", "outerHTML")
+                                                            .attr("hx-target", "#stocks"))),
                                     div(attrs(".intradiv col-span-4"),
                                             h2(attrs(".font-bold .text-center"), "Gestion des equipes"),
                                             equipeComposant.element()))
@@ -76,7 +80,10 @@ public class ManagerPage {
     }
 
     private static DomContent stateElement(RestaurantState state) {
-        return div(attrs(".state"), button(attrs(".bg-primary p-2"), span(state.toString())).attr("hx-patch", "/api/restaurant/toggle").attr("hx-swap", "outerHTML"));
+        return
+                button(attrs(".bg-primary p-2"), state.toString())
+                        .attr("hx-patch", "/api/restaurant/toggle")
+                        .attr("hx-swap", "outerHTML");
     }
 
     private static DomContent stocksElement(Stock stock) {
