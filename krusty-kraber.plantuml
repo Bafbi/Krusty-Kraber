@@ -1,0 +1,166 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Application {
+  - restaurant: Restaurant
+}
+class BarPage
+class Barman {
+  - nbCocktails: int
+}
+class BarmanStat {
+  - nbCocktails: int
+}
+enum Boisson << enumeration >> {
+  + CIDRE: 
+  + JUS_FRUIT: 
+  - price: double
+  + EAU_PLATE: 
+  + BIERE: 
+  + LIMONADE: 
+}
+class Build_gradle
+class Command {
+  - recettesCommandes: Map<Recette, Integer>
+  - boissonsCommandes: Map<Boisson, Integer>
+  - recettesPrepares: Map<Recette, Integer>
+  - boissonsPrepares: Map<Boisson, Integer>
+}
+class Cuisine {
+  - stocks: Stock
+  - recettes: List<Recette>
+  - employeManager: EmployeManager
+  - commands: List<Command>
+}
+class CuisinePage
+class Cuisinier {
+  - stats: CuisinierStats
+}
+class CuisinierStats {
+  - nbPlats: int
+}
+class Employe {
+  - id: int
+  - consecutiveWorkDays: int
+  - salaire: double
+  - nom: String
+  - prenom: String
+}
+class EmployeManager {
+  - employes: List<Employe>
+  - equipe: Map<Integer, Boolean>
+}
+class EquipeComposant {
+  - employeManager: EmployeManager
+  - app: Javalin
+}
+class Facture {
+  - transaction: Transaction
+  - serialVersionUID: long
+}
+enum Ingredient << enumeration >> {
+  + PAIN: 
+  + PATE: 
+  + OIGNON: 
+  + BOEUF: 
+  + FROMAGE: 
+  + CHAMPIGNON: 
+  + SALADE: 
+  + SAUCISSE: 
+  + TOMATE: 
+}
+class Main
+class Manager
+class ManagerPage
+class NotSufficientStockException
+class Recette {
+  - name: String
+  - ingredients: List<Ingredient>
+  - price: double
+}
+class Restaurant {
+  - date: Date
+  - logger: Logger
+  - transactionManager: TransactionManager
+  - stocks: Stock
+  - employeManager: EmployeManager
+  - recettes: List<Recette>
+  - factures: Map<Date, List<Facture>>
+  - state: RestaurantState
+}
+enum RestaurantState << enumeration >> {
+  + OPEN: 
+  + CLOSE: 
+  + CLEANING: 
+}
+class RestaurantStats {
+  - chiffreAffaire: double
+  - nbTransactions: int
+}
+class Salle {
+  - transactions: List<Transaction>
+  - stocks: Stock
+  - employeManager: EmployeManager
+}
+class Serveur
+class ServeurPage
+class Settings_gradle
+class Stats
+class Stock {
+  - stocks: Map<Ingredient, Integer>
+  - listeCourse: Map<Ingredient, Integer>
+  - defaultStocks: Map<Ingredient, Integer>
+}
+class Transaction {
+  - tableId: int
+  - clientNumber: int
+  - recus: List<Double>
+  - serveurId: int
+  - id: int
+  - command: Command
+}
+class TransactionManager {
+  - transactions: Map<Integer, Transaction>
+  - lastId: int
+}
+class Utils
+class build
+
+Application                 "1" *-[#595959,plain]-> "restaurant\n1" Restaurant                  
+Barman                       -[#000082,plain]-^  Employe                     
+BarmanStat                   +-[#820000,plain]-  Barman                      
+BarmanStat                   -[#000082,plain]-^  Stats                       
+Command                     "1" *-[#595959,plain]-> "boissonsCommandes\n*" Boisson                     
+Command                     "1" *-[#595959,plain]-> "recettesCommandes\n*" Recette                     
+Cuisine                     "1" *-[#595959,plain]-> "commands\n*" Command                     
+Cuisine                     "1" *-[#595959,plain]-> "employeManager\n1" EmployeManager              
+Cuisine                     "1" *-[#595959,plain]-> "recettes\n*" Recette                     
+Cuisine                     "1" *-[#595959,plain]-> "stocks\n1" Stock                       
+Cuisinier                   "1" *-[#595959,plain]-> "stats\n1" CuisinierStats              
+Cuisinier                    -[#000082,plain]-^  Employe                     
+CuisinierStats               +-[#820000,plain]-  Cuisinier                   
+CuisinierStats               -[#000082,plain]-^  Stats                       
+EmployeManager              "1" *-[#595959,plain]-> "employes\n*" Employe                     
+EquipeComposant             "1" *-[#595959,plain]-> "employeManager\n1" EmployeManager              
+Facture                     "1" *-[#595959,plain]-> "transaction\n1" Transaction                 
+Manager                      -[#000082,plain]-^  Employe                     
+NotSufficientStockException  +-[#820000,plain]-  Stock                       
+Recette                     "1" *-[#595959,plain]-> "ingredients\n*" Ingredient                  
+Restaurant                  "1" *-[#595959,plain]-> "employeManager\n1" EmployeManager              
+Restaurant                  "1" *-[#595959,plain]-> "recettes\n*" Recette                     
+Restaurant                  "1" *-[#595959,plain]-> "state\n1" RestaurantState             
+Restaurant                  "1" *-[#595959,plain]-> "stocks\n1" Stock                       
+Restaurant                  "1" *-[#595959,plain]-> "transactionManager\n1" TransactionManager          
+RestaurantStats              +-[#820000,plain]-  Restaurant                  
+RestaurantStats              -[#000082,plain]-^  Stats                       
+Salle                       "1" *-[#595959,plain]-> "employeManager\n1" EmployeManager              
+Salle                       "1" *-[#595959,plain]-> "stocks\n1" Stock                       
+Salle                       "1" *-[#595959,plain]-> "transactions\n*" Transaction                 
+Serveur                      -[#000082,plain]-^  Employe                     
+Stock                       "1" *-[#595959,plain]-> "stocks\n*" Ingredient                  
+Transaction                 "1" *-[#595959,plain]-> "command\n1" Command                     
+TransactionManager          "1" *-[#595959,plain]-> "transactions\n*" Transaction                 
+@enduml

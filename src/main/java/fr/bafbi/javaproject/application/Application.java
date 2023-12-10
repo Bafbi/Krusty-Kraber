@@ -44,7 +44,6 @@ public class Application {
 
 
         // Handle a GET request to the path "/".
-        var count = new AtomicInteger();
         app.get("/", ctx ->
 
         {
