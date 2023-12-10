@@ -3,14 +3,17 @@ package fr.bafbi.javaproject;
 import kotlin.Pair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TransactionManager {
 
-    private final List<Transaction> transactions = new ArrayList<>();
+    private final Map<Integer,Transaction> transactions = new HashMap<>();
+    private int lastId = 0;
 
     public List<Transaction> getTransactions() {
-        return transactions;
+        return transactions.values().stream().toList();
     }
 
     public Transaction getTransaction(int transactionId) {
@@ -19,8 +22,8 @@ public class TransactionManager {
 
     public List<Transaction> getTransactions(int serveurId) {
         List<Transaction> transactions = new ArrayList<>();
-        for (Transaction transaction : this.transactions) {
-            if (transaction.getServeurId() == serveurId || serveurId == -1) {
+        for (Transaction transaction : this.transactions.values()) {
+            if (transaction.getServeurId() == serveurId) {
                 transactions.add(transaction);
             }
         }
@@ -28,14 +31,14 @@ public class TransactionManager {
     }
 
     public Transaction createTransaction(int tableId, int clientNumber, int serveurId) {
-        Transaction transaction = new Transaction(tableId, clientNumber, serveurId, transactions.size());
-        transactions.add(transaction);
+        Transaction transaction = new Transaction(tableId, clientNumber, serveurId, lastId++);
+        transactions.put(transaction.getId(), transaction);
         return transaction;
     }
 
     public List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
-        for (Transaction transaction : transactions) {
+        for (Transaction transaction : transactions.values()) {
             commands.add(transaction.getCommand());
         }
         return commands;
@@ -43,7 +46,7 @@ public class TransactionManager {
 
     public List<Pair<Command, Integer>> getCommandsAndId() {
         List<Pair <Command, Integer>> commands = new ArrayList<>();
-        for (Transaction transaction : transactions) {
+        for (Transaction transaction : transactions.values()) {
             commands.add(new Pair<>(transaction.getCommand(), transaction.getId()));
         }
         return commands;
