@@ -81,17 +81,6 @@ public class ServeurPage {
 
 //            int nbRecettes = restaurant.getRecettes().size();
             String transaction_state = transaction.getCommand().isReady()?"Prête":"En préparation";
-
-            Map<Recette,Boolean> isStockForRecipe = new HashMap<>();
-            for(Recette rc :restaurant.getRecettes()){
-                Boolean isStock = true;
-                for(Ingredient ingredient:rc.getIngredients().toList())
-                {
-                    if(restaurant.getStocks().getStock(ingredient)<=0) isStock = false;
-                }
-                isStockForRecipe.put(rc,isStock);
-            }
-
             var content = html(
                     Application.createHeadElement(),
                     body(attrs(".bg-background"),
@@ -111,18 +100,7 @@ public class ServeurPage {
                                     h2("Carte des plats : "),
                                             each(restaurant.getRecettes(),
                                                     recette -> div(
-//                                                            div(attrs(".flex flex-row"),
-//                                                                button(attrs("."), recette.getName())
-//                                                                    .attr("hx-put", "/api/serveur/" + serveurId + "/" + transactionId + "/command?recette_id=" + recette.getId())
-//                                                                        .attr("hx-target", "#command-" + recette.getId())
-//                                                                        .attr("hx-swap", "outerHTML")
-//                                                                        .withCondDisabled(!isStockForRecipe.get(recette)),
-////                                                                        .attr(isStockForRecipe.get(recette)?"enabled":"disabled")
-//                                                                div(attrs(".flex flex-row"),
-//                                                                        span("Prix: " + recette.getPrice() + "€")
-//                                                                )),
                                                             commandRecetteElement(restaurant,recette, serveurId, transactionId, transaction.getCommand())
-
                                                     )
                                             )
                                     ),
@@ -174,8 +152,6 @@ public class ServeurPage {
             for (Ingredient ingredient: recette.getIngredients().toList()) {
                 restaurant.getStocks().takeStock(ingredient,1);
             }
-
-//            ctx.html(commandsElement(transaction.getCommand(), serveurId, transactionId).render());
             ctx.html(
                 commandRecetteElement(restaurant,recette, serveurId, transactionId, transaction.getCommand()).render());
         });
@@ -187,16 +163,6 @@ public class ServeurPage {
             var recette = restaurant.getRecette(recetteName);
             var transaction = restaurant.getTransactionManager().getTransaction(transactionId);
             transaction.getCommand().removeRecette(recette);
-//            isStockForRecipe = new HashMap<>();
-//            for(Recette rc :restaurant.getRecettes()){
-//                Boolean isStock = true;
-//                for(Ingredient ingredient:rc.getIngredients().toList())
-//                {
-//                    if(restaurant.getStocks().getStock(ingredient)<=0) isStock = false;
-//                }
-//                isStockForRecipe.put(rc,isStock);
-//            }
-//            ctx.html(commandsElement(transaction.getCommand(), serveurId, transactionId).render());
             ctx.html(commandRecetteElement(restaurant,recette, serveurId, transactionId, transaction.getCommand()).render());
 
         });
@@ -235,14 +201,11 @@ public class ServeurPage {
     }
 
     private static DivTag commandRecetteElement(Restaurant restaurant, Recette recette, int serveurId, int transactionId, Command command) {
-        Map<Recette,Boolean> isStockForRecipe = new HashMap<>();
         Boolean isStock = true;
         for(Ingredient ingredient:recette.getIngredients().toList())
         {
             if(restaurant.getStocks().getStock(ingredient)<=0) isStock = false;
-            System.out.println("La recette est :"+recette.getName()+" "+isStock);
         }
-//        isStockForRecipe.put(recette,isStock);
         return div(attrs("#command-" + recette.getId()+".flex flex-row w-full gap-10 justify-between"),
                 div(attrs(".flex flex-row"),
                         button(attrs("."), recette.getName())
