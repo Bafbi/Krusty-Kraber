@@ -43,7 +43,22 @@ public class ManagerPage {
                                                             .attr("hx-target", "#stocks"))),
                                     div(attrs(".intradiv col-span-4"),
                                             h2(attrs(".font-bold .text-center"), "Gestion des equipes"),
-                                            equipeComposant.element()))
+                                            equipeComposant.element())),
+                                    // factures
+                                    div(attrs(".intradiv col-span-4"),
+                                            h2(attrs(".font-bold .text-center"), "Factures"),
+                                            div(attrs(".grid grid-cols-2 gap-5"),
+                                                    each(restaurant.getFactures().keySet(), date -> div(
+                                                            h3(date.toLocaleString()),
+                                                            ul(
+                                                                    each(restaurant.getFactures().get(date), facture -> li(
+                                                                            facture.element()
+                                                                    )
+                                                            )
+                                                    )
+                                                    ))
+                                            )
+                                    )
 
                     )
 

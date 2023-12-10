@@ -20,10 +20,6 @@ public class Utils {
 
     public static void saveObject(File file, Object object) {
         try {
-            // create the file if it doesn't exist
-            if (!file.exists()) {
-                file.createNewFile();
-            }
             var fileOutputStream = new FileOutputStream(file);
             var objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(object);

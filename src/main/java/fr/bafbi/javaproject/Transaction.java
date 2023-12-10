@@ -11,7 +11,7 @@ public class Transaction implements Serializable {
     private final int clientNumber;
     private final int serveurId;
     private final Command command = new Command();
-    private List<Double> recu = new ArrayList<>();
+    private final List<Double> recus = new ArrayList<>();
 
 
 
@@ -43,15 +43,19 @@ public class Transaction implements Serializable {
     }
 
     public double getMontantPaye() {
-        return recu.stream().mapToDouble(Double::doubleValue).sum();
+        return recus.stream().mapToDouble(Double::doubleValue).sum();
     }
 
     public void payer(double montant) {
-        recu.add(montant);
+        recus.add(montant);
     }
 
     public double getMontantRestant() {
         return command.getTotalPrice() - getMontantPaye();
+    }
+
+    public List<Double> getRecus() {
+        return recus;
     }
 
 
