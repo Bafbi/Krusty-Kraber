@@ -4,8 +4,8 @@ import fr.bafbi.javaproject.jobs.Cuisinier;
 import fr.bafbi.javaproject.jobs.Serveur;
 import org.slf4j.Logger;
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.File;
+import java.util.*;
 
 public class Restaurant {
 
@@ -13,7 +13,8 @@ public class Restaurant {
     private final EmployeManager employeManager = new EmployeManager();
     private final List<Recette> recettes;
     private final TransactionManager transactionManager = new TransactionManager();
-
+    private final Date date = new Date();
+    private final Map<Date, List<Facture>> factures;
 
 
     private RestaurantState state = RestaurantState.CLOSE;
@@ -24,6 +25,42 @@ public class Restaurant {
         this.recettes = recettes;
         var defaultStocks = Arrays.stream(Ingredient.values()).collect(java.util.stream.Collectors.toMap(ingredient -> ingredient, ingredient -> 100));
         this.stocks = new Stock(defaultStocks);
+        this.factures = loadFactures();
+    }
+
+    /**
+     * Will load all the factures from disk (./factures/{date}.ser)
+     * @return a map of date and list of factures for that date
+     */
+    private Map<Date, List<Facture>> loadFactures() {
+        Map<Date, List<Facture>> factures = new HashMap<>();
+
+        var facturesDir = new File("./factures");
+        if (!facturesDir.exists()) {
+            facturesDir.mkdir();
+        }
+        for (File file : facturesDir.listFiles()) {
+            if (file.getName().endsWith(".ser")) {
+                var date = new Date(Long.parseLong(file.getName().replace(".ser", "")));
+                var facture = Utils.loadObject(file, Facture.class);
+                if (factures.containsKey(date)) {
+                    factures.get(date).add(facture);
+                } else {
+                    factures.put(date, new ArrayList<>(Collections.singletonList(facture)));
+                }
+            }
+        }
+        return factures;
+    }
+
+    public void createFacture(Transaction transaction) {
+        var facture = new Facture(transaction);
+        if (factures.containsKey(date)) {
+            factures.get(date).add(facture);
+        } else {
+            factures.put(date, new ArrayList<>(Collections.singletonList(facture)));
+        }
+        Utils.saveObject(new File("./factures/" + date.getTime() + ".ser"), facture);
     }
 
     public Stock getStocks() {
@@ -32,14 +69,6 @@ public class Restaurant {
 
     public EmployeManager getEmployeManager() {
         return employeManager;
-    }
-
-    public Cuisine getCuisine() {
-        return cuisine;
-    }
-
-    public Salle getSalle() {
-        return salle;
     }
 
     public List<Recette> getRecettes() {

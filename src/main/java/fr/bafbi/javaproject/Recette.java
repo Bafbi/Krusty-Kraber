@@ -2,12 +2,13 @@ package fr.bafbi.javaproject;
 
 import j2html.tags.specialized.DivTag;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static j2html.TagCreator.*;
 
-public class Recette {
+public class Recette implements Serializable {
     private final String name;
     private final List<Ingredient> ingredients;
     private final double price;

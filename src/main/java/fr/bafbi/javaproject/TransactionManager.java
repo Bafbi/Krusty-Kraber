@@ -54,4 +54,7 @@ public class TransactionManager {
     }
 
 
+    public void removeTransaction(int transactionId) {
+        transactions.remove(transactionId);
+    }
 }
