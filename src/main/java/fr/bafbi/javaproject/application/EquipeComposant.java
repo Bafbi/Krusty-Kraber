@@ -40,7 +40,7 @@ public class EquipeComposant {
     }
 
     public DivTag element() {
-        return div(attrs(".grid grid-cols-3 gap-4"),
+        return div(attrs("#equipe .grid grid-cols-3 gap-4"),
                 each(employeManager.getEmployes(), employe -> div(attrs(".employe"), employe.element(), planificationElement(employeManager.isPlanifie(employe.getId()), employe.getId()))));
     }
 }

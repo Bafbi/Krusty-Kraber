@@ -100,6 +100,10 @@ public class Restaurant {
         return null;
     }
 
+    public Map<Date, List<Facture>> getFactures() {
+        return factures;
+    }
+
 
     public static class RestaurantStats extends Stats {
         private final int nbTransactions;

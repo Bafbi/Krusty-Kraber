@@ -4,6 +4,7 @@ import fr.bafbi.javaproject.Ingredient;
 import fr.bafbi.javaproject.Restaurant;
 import fr.bafbi.javaproject.RestaurantState;
 import fr.bafbi.javaproject.Stock;
+import fr.bafbi.javaproject.jobs.*;
 import io.javalin.Javalin;
 import j2html.tags.DomContent;
 
@@ -43,7 +44,25 @@ public class ManagerPage {
                                                             .attr("hx-target", "#stocks"))),
                                     div(attrs(".intradiv col-span-4"),
                                             h2(attrs(".font-bold .text-center"), "Gestion des equipes"),
-                                            equipeComposant.element())),
+                                            equipeComposant.element(),
+                                            // new employees
+                                            form(
+                                                    input().withType("text").withName("nom").withPlaceholder("Nom"),
+                                                    input().withType("text").withName("prenom").withPlaceholder("Prenom"),
+                                                    input().withType("number").withName("salaire").withPlaceholder("Salaire"),
+                                                    select(attrs(".block .w-full .mt-1 .rounded-md .shadow-sm .border-gray-300 .bg-white .focus:border-primary .focus:ring .focus:ring-primary .focus:ring-opacity-50"),
+                                                            option("Serveur").withValue("Serveur"),
+                                                            option("Cuisinier").withValue("Cuisinier"),
+                                                            option("Barman").withValue("Barman"),
+                                                            option("Manager").withValue("Manager")
+                                                    ).withName("type"),
+                                                    button("Recruter"))
+                                                    .attr("hx-post", "/api/employe")
+                                                    .attr("hx-swap", "outerHTML")
+                                                    .attr("hx-target", "#equipe")
+                                    ),
+
+
                                     // factures
                                     div(attrs(".intradiv col-span-4"),
                                             h2(attrs(".font-bold .text-center"), "Factures"),
@@ -52,20 +71,36 @@ public class ManagerPage {
                                                             h3(date.toLocaleString()),
                                                             ul(
                                                                     each(restaurant.getFactures().get(date), facture -> li(
-                                                                            facture.element()
+                                                                                    facture.element()
+                                                                            )
                                                                     )
                                                             )
-                                                    )
                                                     ))
                                             )
                                     )
 
-                    )
+                            ))
 
             );
             var rendered = "<!DOCTYPE html>\n" + content.render();
             ctx.html(rendered);
 
+        });
+
+        app.post("/api/employe", ctx -> {
+            var nom = ctx.formParam("nom");
+            var prenom = ctx.formParam("prenom");
+            var salaire = Integer.parseInt(ctx.formParam("salaire"));
+            var type = ctx.formParam("type");
+            Class<? extends Employe> employeClass = switch (type) {
+                case "Serveur" -> Serveur.class;
+                case "Cuisinier" -> Cuisinier.class;
+                case "Barman" -> Barman.class;
+                case "Manager" -> Manager.class;
+                default -> null;
+            };
+            restaurant.getEmployeManager().recruter(nom, prenom, salaire, employeClass);
+            ctx.html(equipeComposant.element().render());
         });
 
         app.patch("/api/restaurant/toggle", ctx -> {
