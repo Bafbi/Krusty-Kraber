@@ -34,13 +34,8 @@ public class Restaurant {
         return employeManager;
     }
 
-    public Cuisine getCuisine() {
-        return cuisine;
-    }
 
-    public Salle getSalle() {
-        return salle;
-    }
+
 
     public List<Recette> getRecettes() {
         return recettes;
