@@ -1,5 +1,6 @@
 plugins {
-    id("java")
+    // id("java")
+    id("application")
 }
 
 group = "fr.bafbi.javaproject"
@@ -31,4 +32,7 @@ tasks {
 
 tasks.test {
     useJUnitPlatform()
+}
+application{
+    mainClass = "fr.bafbi.javaproject.Main"
 }
