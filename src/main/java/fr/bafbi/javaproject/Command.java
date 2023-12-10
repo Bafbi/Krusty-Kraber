@@ -5,11 +5,12 @@ import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.UlTag;
 import kotlin.Pair;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static j2html.TagCreator.*;
 
-public class Command {
+public class Command implements Serializable {
 
     private final Map<Recette, Integer> recettesCommandes = new HashMap<>();
     private final Map<Recette, Integer> recettesPrepares = new HashMap<>();
@@ -120,6 +121,17 @@ public class Command {
             }
         }
         return true;
+    }
+
+    public double getTotalPrice() {
+        double price = 0;
+        for (Recette recette : recettesCommandes.keySet()) {
+            price += recette.getPrice() * recettesCommandes.get(recette);
+        }
+        for (Boisson boisson : boissonsCommandes.keySet()) {
+            price += boisson.getPrice() * boissonsCommandes.get(boisson);
+        }
+        return price;
     }
 
 }
