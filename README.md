@@ -44,8 +44,5 @@ Notre classe `Restaurant` contient les différentes 'modules' dont nous avons be
 
 Les `Command` fonctionne à l'aide de plusieurs Map<?, Interger> qui va contenir les Recette/Boisson et leur quantité ainsi que les Recette/Boisson qui ont etait preparé.
 
-### Le Flow
-
-Comme notre application est une webApp, plusieurs pages peuvent être ouverte en même temps, une pour chaque employé par exemple.
 
 

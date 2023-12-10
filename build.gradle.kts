@@ -3,6 +3,8 @@ plugins {
     id("application")
 }
 
+apply(plugin = "java")
+
 group = "fr.bafbi.javaproject"
 version = "1.0-SNAPSHOT"
 
@@ -33,6 +35,8 @@ tasks {
 tasks.test {
     useJUnitPlatform()
 }
-application{
-    mainClass = "fr.bafbi.javaproject.Main"
+
+application {
+    mainClass.set("fr.bafbi.javaproject.Main")
 }
+

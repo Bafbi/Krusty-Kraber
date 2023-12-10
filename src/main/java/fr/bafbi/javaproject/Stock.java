@@ -12,6 +12,8 @@ public class Stock {
     private final Map<Ingredient, Integer> stocks = new HashMap<>();
     private Map<Ingredient, Integer> defaultStocks;
 
+    private Map<Ingredient, Integer> listeCourse;
+
     public Stock(Map<Ingredient, Integer> defaultStocks) {
         this.defaultStocks = defaultStocks;
         this.stocks.putAll(defaultStocks);
@@ -53,7 +55,12 @@ public class Stock {
                 stocks.put(entry.getKey(), defaultStocks.get(entry.getKey()));
             }
         }
+        listeCourse = diff;
         return diff;
+    }
+
+    public Map<Ingredient, Integer> getListeCourse() {
+        return listeCourse;
     }
 
     public DomContent element(Ingredient ingredient) {

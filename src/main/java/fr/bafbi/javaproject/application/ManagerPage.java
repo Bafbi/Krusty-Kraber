@@ -124,7 +124,6 @@ public class ManagerPage {
 
         app.post("/api/stock/refill", ctx -> {
             var diff = restaurant.getStocks().refillStocks();
-            Restaurant.getLogger().info("Refill stocks: " + diff);
             ctx.html(stocksElement(restaurant.getStocks()).render());
         });
     }
@@ -153,7 +152,13 @@ public class ManagerPage {
                                         )
                                 )
                         )
-                )
+                ),
+                stock.getListeCourse() != null ? div(attrs(".bg-surface-variant px-5 py-2 flex flex-row gap-5 align-center justify-between rounded-md"),
+                        h3("Liste de course"),
+                        ul(
+                                each(stock.getListeCourse().entrySet(), entry -> li(entry.getKey().name() + " : " + entry.getValue()))
+                        )
+                ) : div()
         );
     }
 
