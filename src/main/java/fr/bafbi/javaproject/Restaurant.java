@@ -26,7 +26,6 @@ public class Restaurant {
         var defaultStocks = Arrays.stream(Ingredient.values()).collect(java.util.stream.Collectors.toMap(ingredient -> ingredient, ingredient -> 100));
         this.stocks = new Stock(defaultStocks);
         this.factures = loadFactures();
-        getLogger().info("Factures loaded {} factures", factures.size());
     }
 
     /**
@@ -99,10 +98,6 @@ public class Restaurant {
             }
         }
         return null;
-    }
-
-    public Map<Date, List<Facture>> getFactures() {
-        return factures;
     }
 
 

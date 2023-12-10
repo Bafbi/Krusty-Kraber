@@ -1,6 +1,7 @@
 package fr.bafbi.javaproject.application;
 
 import fr.bafbi.javaproject.Command;
+import fr.bafbi.javaproject.Ingredient;
 import fr.bafbi.javaproject.Recette;
 import fr.bafbi.javaproject.Restaurant;
 import fr.bafbi.javaproject.jobs.Cuisinier;
@@ -66,6 +67,7 @@ public class CuisinePage {
             var recetteId = ctx.queryParam("recetteId");
             var command = restaurant.getTransactionManager().getTransaction(transactionId).getCommand();
             command.prepareRecette(recetteId);
+//            command.removeRecette();
             ctx.html(recetteElement(command, command.getRecette(recetteId), transactionId).render());
         });
     }
