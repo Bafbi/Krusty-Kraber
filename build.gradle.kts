@@ -37,6 +37,8 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.shadowJar {
-    mainClassName = "fr.bafbi.javaproject.Main"
+
+application {
+    mainClass.set("fr.bafbi.javaproject.Main")
 }
+
