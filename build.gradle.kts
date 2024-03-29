@@ -37,6 +37,6 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.jar {
-    manifest.attributes["mainClassName"] = "fr.bafbi.javaproject.Main"
+tasks.shadowJar {
+    mainClassName = "fr.bafbi.javaproject.Main"
 }
