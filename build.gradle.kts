@@ -1,6 +1,7 @@
 plugins {
     // id("java")
-    id("application")
+    // id("application")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 apply(plugin = "java")
@@ -36,12 +37,6 @@ tasks.test {
     useJUnitPlatform()
 }
 
-application {
-    mainClass.set("fr.bafbi.javaproject.Main")
-}
-
-jar {
-  manifest {
-    attributes 'Main-Class': application.mainClass
-  }
+tasks.jar {
+    manifest.attributes["Main-Class"] = "fr.bafbi.javaproject.Main"
 }
