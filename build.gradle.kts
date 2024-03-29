@@ -38,5 +38,5 @@ tasks.test {
 }
 
 tasks.jar {
-    manifest.attributes["Main-Class"] = "fr.bafbi.javaproject.Main"
+    manifest.attributes["mainClassName"] = "fr.bafbi.javaproject.Main"
 }
