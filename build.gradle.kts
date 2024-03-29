@@ -40,3 +40,8 @@ application {
     mainClass.set("fr.bafbi.javaproject.Main")
 }
 
+jar {
+  manifest {
+    attributes 'Main-Class': application.mainClass
+  }
+}
